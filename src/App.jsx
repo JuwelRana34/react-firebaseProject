@@ -4,9 +4,10 @@ import Register from './page/Register';
 import Login from './page/Login';
 import AdminDashboard from './page/AdminDashboard';
 import UserDashboard from './page/UserDashboard';
-import Home from './page/Home';
+// import Home from './page/Home';
 import Admin from './page/Admin';
 import NavbarMenu from './components/NavbarMenu';
+import Notice from './components/Notice';
 import'./App.css'
 // import AdminCheck from './usercontext/AdminCheck';
 
@@ -20,7 +21,7 @@ function App() {
       <NavbarMenu/>
      
       <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Notice/>} />
       <Route path="/Admin3" element={<Admin />} />
       <Route path="/login" element={<Login />} />
       <Route path="/admin" element={<AdminDashboard />}  />

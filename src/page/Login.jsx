@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { Button,  Label, TextInput } from "flowbite-react";
-
+import { Navigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,10 +11,13 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert('Logged in');
+      await signInWithEmailAndPassword(auth, email, password,
+        <Navigate to="/user" replace={true} />
+      );
+
       setEmail("")
       setPassword("")
+      
     } catch (error) {
       console.error('Error logging in:', error);
     }

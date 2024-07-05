@@ -7,7 +7,8 @@ import { db} from '../firebaseConfig';
 function Notice() {
     const [Notice, setNotice] = useState([]);
 
- 
+    console.log(Notice)
+
     useEffect(() => {
       const fetchUNotice = async () => {
         const usersSnapshot = await getDocs(collection(db, 'notices'));
@@ -27,6 +28,8 @@ function Notice() {
     <ul>
         {Notice.map(notics => (
           <div key={notics.id}>
+            {console.log(notics.title)}
+            <p>{notics.title}</p>
             <p>{notics.text}</p>
             <p>Posted on: {formatDate(new Date(notics.createdAt.seconds * 1000))}</p>
           </div>

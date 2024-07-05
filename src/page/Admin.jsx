@@ -4,8 +4,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig';
-import Notice from '../components/Notice';
-
+// import Notice from '../components/Notice';
+import NoticeForm from '../page/NoticeForm'
 function Admin() {
   const [user, loading, error ] = useAuthState(auth);
   const [adminData, setAdminData] = useState(null);
@@ -71,7 +71,8 @@ useEffect(() => {
       {users.map(user => (
           <li key={user.id}>{user.email}</li>
         ))}
-        <Notice/>
+        {/* <Notice/> */}
+        <NoticeForm/>
     </div>
   );
 }
