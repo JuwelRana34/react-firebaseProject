@@ -9,7 +9,11 @@ export default {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'green-radial': 'radial-gradient(circle, rgb(50 185 222) 0%, #0e7490 100%)',
+      },
+    },
   },
   plugins: [
     // eslint-disable-next-line no-undef

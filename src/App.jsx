@@ -9,7 +9,8 @@ import Admin from './page/Admin';
 import NavbarMenu from './components/NavbarMenu';
 import Notice from './components/Notice';
 import'./App.css'
-// import AdminCheck from './usercontext/AdminCheck';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -19,37 +20,17 @@ function App() {
     
     <Router>
       <NavbarMenu/>
-     
+      <ToastContainer />
       <Routes>
       <Route path="/" element={<Notice/>} />
-      <Route path="/Admin3" element={<Admin />} />
+      <Route path="/Admin" element={<Admin />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/admin" element={<AdminDashboard />}  />
-      {/* <Route path="/admin2" element={<AdminCheck />}  /> */}
+      <Route path="/admin3" element={<AdminDashboard />}  />
       <Route path="/user" element={<UserDashboard />} />
       <Route path="/registration" element={<Register />} />
-        
         <Route path="/login" element={<Login />} />
-        {/* <Route
-          path="/admin"
-          element={
-            <PrivateRoute roles={['admin']}>
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        /> */}
-        {/* <Route
-          path="/user"
-          element={
-            <PrivateRoute roles={['user']}>
-              <UserDashboard />
-            </PrivateRoute>
-          }
-        /> */}
-        {/* <Route
-          path="/user"
-          
-        /> */}
+        
+      
       </Routes>
     </Router>
     

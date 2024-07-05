@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { auth, db } from '../firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
+import { Button, Label, TextInput } from "flowbite-react";
+import {  toast } from 'react-toastify';
+import { Navigate } from 'react-router-dom';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -11,6 +14,17 @@ function Register() {
   const [phone, setPhone] = useState('');
   const [bloodGroup, setBloodGroup] = useState('');
   const [fbLink, setfbLink] = useState('');
+  const [registration, setRegistration] = useState(false);
+
+
+  const notify = () => toast.success('🦄 Registration succesfully', {
+    position: "top-right",
+    theme: "colored",
+    });
+  const totify = () => toast.error('user alreay register please login !', {
+    position: "top-right",
+    theme: "colored",
+    });
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -27,23 +41,68 @@ function Register() {
         fbLink,
         role: 'user'
       });
-
-      console.log('User registered successfully');
+      setRegistration(true)
+      notify()
     } catch (error) {
-      console.error('Error registering user:', error);
+      totify()
+      setRegistration(true)
     }
   };
 
+  if(registration){
+    return <Navigate to="/login"/>
+  }
+
+
   return (
-    <form onSubmit={handleRegister}>
-      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} /> <br />
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} /> <br />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} /> <br />
-      <input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} /> <br />
-      <input type="text" placeholder="Blood Group" value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} /> <br />
-      <input type="text" placeholder="facebook link" value={fbLink} onChange={(e) => setfbLink(e.target.value)} /> <br />
-      <button type="submit">Register</button>
+    <>
+    <form onSubmit={handleRegister} className="flex max-w-md flex-col gap-0">
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="name" value='Name '  />
+        </div>
+        <TextInput id="name" type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} required />
+      </div>
+
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="email" value="Your email" />
+        </div>
+        <TextInput id="email" type="email" placeholder='Your email' value={email} onChange={(e) => setEmail(e.target.value)}  required />
+      </div>
+
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="Phone" value="Your number" />
+        </div>
+        <TextInput id="phone" type="number" placeholder='Namber' value={phone} onChange={(e) => setPhone(e.target.value)}  required />
+      </div>
+
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="Blood Group" value="Your Blood Group" />
+        </div>
+        <TextInput id="Blood Group" type="text" placeholder='ex: B+,O-' value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} required />
+      </div>
+
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="facebook link" value="facebook link" />
+        </div>
+        <TextInput id="facebook link" type="text" placeholder="https://www.facebook.com/xxx" value={fbLink} onChange={(e) => setfbLink(e.target.value)}  required />
+      </div>
+
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="password1" value="Your password" />
+        </div>
+        <TextInput id="password1" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      </div>
+     
+      <Button className=' bg-green-radial' type="submit">Register</Button>
     </form>
+    
+     </>
   );
 }
 

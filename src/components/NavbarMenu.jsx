@@ -9,7 +9,7 @@ function NavbarMenu() {
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">test</span>
       </Navbar.Brand>
       <div className="flex md:order-2">
-       <Link to="/login"> <Button>Login</Button></Link> 
+       <Link to="/login"> <Button className="bg-green-radial">Login</Button></Link> 
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>

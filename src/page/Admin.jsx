@@ -63,11 +63,11 @@ useEffect(() => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  if (!isAdmin) return <div>Access Denied</div>;
+  if (!isAdmin) return <div>Access Denied you are not admin 😈</div>;
 
   return (
     <div>
-      <h1>Admin Dashboard Welcome {adminData.name} </h1>
+      <h1> Welcome to Admin Dashboard {adminData.name} </h1>
       {users.map(user => (
           <li key={user.id}>{user.email}</li>
         ))}

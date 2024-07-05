@@ -4,24 +4,39 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { Button,  Label, TextInput } from "flowbite-react";
 import { Navigate } from 'react-router-dom';
+import {  toast } from 'react-toastify';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+
+  const notify = () => toast.success('🦄 Login succesfully', {
+    position: "top-right",
+    theme: "colored",
+    
+    });
+
+
 
   const handleLogin = async (e) => {
+
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password,
-        <Navigate to="/user" replace={true} />
-      );
-
+      await signInWithEmailAndPassword(auth, email, password);
+      setIsLoggedIn(true)
       setEmail("")
       setPassword("")
-      
+      notify()
     } catch (error) {
       console.error('Error logging in:', error);
     }
   };
+
+
+  if (isLoggedIn) {
+    return <Navigate to="/user" />; // Navigate to the user page if logged in
+  }
 
   return (
 
@@ -42,7 +57,7 @@ const Login = () => {
        <Checkbox id="remember" />
        <Label htmlFor="remember">Remember me</Label>
      </div> */}
-     <Button type="submit">Login</Button>
+     <Button className='bg-green-radial' type="submit">Login</Button>
    </form>
     
      
