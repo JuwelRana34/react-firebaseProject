@@ -147,7 +147,7 @@ const {name, email, role, bloodGroup, phone ,fbLink}= userData
         </div>
       </div>
     </Card>
-    <button className='px-3 py-2 m-2 text-white text-xl font-semibold bg-red-500 rounded-lg shadow-lg shadow-red-200 hover:bg-red-600'><LogoutButton/> </button>
+    <button ><LogoutButton/> </button>
     
     </div>
   );

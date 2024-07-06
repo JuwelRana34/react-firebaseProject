@@ -26,8 +26,6 @@ function Notice() {
 
   return (
     <>
-        <div>Notice</div>
-      
 
           <h1 className="text-center font-bold font-mono text-2xl text-black"> জগন্নথ বিশ্ববিদ্যালয়ের আইটি সোসাইটির সকল নোটিস    </h1>
           <hr className="bg-slate-200 mx-4 w-6/6 h-[1px]"/>

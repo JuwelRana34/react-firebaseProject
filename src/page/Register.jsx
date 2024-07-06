@@ -56,7 +56,8 @@ function Register() {
 
   return (
     <>
-    <form onSubmit={handleRegister} className="flex max-w-md flex-col gap-0">
+    <h1 className=' w-1/2 py-3 text-center text-md md:text-xl font-semibold text-white mx-auto px-4 m-2 bg-blue-500 rounded-md '>Registration Form</h1>
+    <form onSubmit={handleRegister} className="flex mx-3 md:mx-auto justify-center max-w-md flex-col gap-0">
       <div>
         <div className="mb-2 block">
           <Label htmlFor="name" value='Name '  />
@@ -99,9 +100,9 @@ function Register() {
         <TextInput id="password1" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
      
-      <Button className=' bg-green-radial' type="submit">Register</Button>
+      <Button className=' mt-3 bg-green-radial' type="submit">Register</Button>
     </form>
-    
+
      </>
   );
 }

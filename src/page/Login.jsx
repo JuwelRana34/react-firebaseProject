@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
 
-    <form onSubmit={handleLogin} className="flex max-w-md flex-col gap-4">
+    <form onSubmit={handleLogin} className="flex md:mx-auto mx-4 max-w-md flex-col gap-4">
      <div>
        <div className="mb-2 block">
          <Label htmlFor="email1" value="Your email" />

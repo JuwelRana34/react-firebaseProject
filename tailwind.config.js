@@ -12,6 +12,7 @@ export default {
     extend: {
       backgroundImage: {
         'green-radial': 'radial-gradient(circle, rgb(50 185 222) 0%, #0e7490 100%)',
+        'green-green': 'radial-gradient(circle, #f472b6 0%, #ec4899 100%)',
       },
     },
   },

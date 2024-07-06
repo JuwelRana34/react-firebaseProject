@@ -28,7 +28,7 @@ const LogoutButton = () => {
     return <Navigate to="/login" />; // Navigate to the user page if logged in
   }
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return <button className='px-3 py-2 m-2 text-white text-xl font-semibold bg-red-500 rounded-lg shadow-lg shadow-red-200 hover:bg-red-600' onClick={handleLogout}>Logout</button>;
 };
 
 export default LogoutButton;
