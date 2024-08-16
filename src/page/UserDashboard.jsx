@@ -1,15 +1,23 @@
 // src/UserDashboard.js
 import LogoutButton from '../components/LogoutButton';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 import { db, auth  } from '../firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 // import { Table } from "flowbite-react";
 import { Card, Dropdown } from "flowbite-react";
+// import FileUpload from '../components/ProfilePhotoUpload';
+// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+// import { setDoc } from "firebase/firestore";
+import ProfileContext from "../usercontext/ProfileContext.js"
+import { NavLink } from 'react-router-dom';
 
 function UserDashboard() {
+  const { userId } = useContext(ProfileContext);
+
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [profilePhotoURL, setProfilePhotoURL] = useState("");
 
   useEffect(() => {
     const fetchUserData = async (uid) => {
@@ -34,6 +42,19 @@ function UserDashboard() {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    // Fetch existing profile photo URL if available
+    const fetchProfilePhoto = async () => {
+      const docRef = doc(db, "users", userId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setProfilePhotoURL(docSnap.data().profilePhotoURL);
+      }
+    };
+
+    fetchProfilePhoto();
+  }, [userId]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -44,8 +65,7 @@ function UserDashboard() {
 const {name, email, role, bloodGroup, phone ,fbLink}= userData
   return (
     <div>
-      <h1 className=' text-2xl w-5/6 mx-auto text-center rounded-md py-3 text-white bg-green-400 shadow-lg  shadow-green-300 '>Welcome to your <span className=' font-semibold text-[#07273b]' > {name}</span> !</h1>
-      <h1>User Dashboard</h1>
+      <h1 className=' text-2xl w-5/6 mb-4 mx-auto text-center rounded-md py-3 text-white bg-green-400 shadow-lg  shadow-green-300 '>Welcome to your Dashbord <span className=' font-semibold text-[#07273b]' > {name}</span> !</h1>
 {/* table  */}
 
       {/* <div className="overflow-x-auto my-5">
@@ -84,19 +104,19 @@ const {name, email, role, bloodGroup, phone ,fbLink}= userData
     </div> */}
 
 {/* profile  */}
-<Card className="max-w-sm">
+<Card className=" w-[95%] md:max-w-sm mx-auto">
       <div className="flex justify-end px-4 pt-4">
         <Dropdown inline label="">
           <Dropdown.Item>
-            <a
-              href="#"
+            <NavLink to="/PhotoUpdate"
+             
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              Edit
-            </a>
+             profile Photo update
+            </NavLink>
           </Dropdown.Item>
           <Dropdown.Item>
-            <a
+            {/* <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
             >
@@ -109,19 +129,13 @@ const {name, email, role, bloodGroup, phone ,fbLink}= userData
               className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               Delete
-            </a>
+            </a> */}
           </Dropdown.Item>
         </Dropdown>
       </div>
       {/* image of profile  */}
       <div className="flex flex-col items-center pb-10">
-        {/* <Image
-          alt="Bonnie image"
-          height="96"
-          src="/images/people/profile-picture-3.jpg"
-          width="96"
-          className="mb-3 rounded-full shadow-lg"
-        /> */}
+      <img src={profilePhotoURL} alt="Profile" className="mb-3 rounded-full shadow-lg h-32 w-32 md:h-40 md:w-40"  />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{name}</h5>
         <span className="text-sm text-gray-500 dark:text-gray-400">{email}</span>
         <div className="mt-4 mx-auto text-center space-x-3 lg:mt-6">
@@ -146,6 +160,7 @@ const {name, email, role, bloodGroup, phone ,fbLink}= userData
 
         </div>
       </div>
+      
     </Card>
     <button ><LogoutButton/> </button>
     

@@ -1,4 +1,5 @@
 // src/App.js
+
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
 import Register from './page/Register';
 import Login from './page/Login';
@@ -12,11 +13,14 @@ import'./App.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAdminCheck from './hooks/useAdminCheck';
+import ProfilePhotoUpload from './components/ProfilePhotoUpload';
+
 
 
 function App() {
   
   const {isAdmin,user} = useAdminCheck();
+ 
   return (
 
     
@@ -29,6 +33,7 @@ function App() {
       {user&& <>
       <Route path="/notice" element={<Notice/>} />
       <Route path="/user" element={<UserDashboard />} />
+      <Route path="/PhotoUpdate" element={<ProfilePhotoUpload />} />
       </>}
       {isAdmin&& <Route path="/Admin" element={<Admin />} />}
       <Route path="/login" element={<Login />} />
