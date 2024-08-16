@@ -153,9 +153,9 @@ const {name, email, role, bloodGroup, phone ,fbLink}= userData
             Message
           </a> */}
           <div className=' text-start'>
-            <h1>Phone:{phone}</h1>
-            <h1>bloodGroup:{bloodGroup}</h1>
-            <h1>status:{role}</h1>
+            <h1>Phone: {phone}</h1>
+            <h1>bloodGroup: {bloodGroup}</h1>
+            <h1>status: {role}</h1>
           </div>
 
         </div>

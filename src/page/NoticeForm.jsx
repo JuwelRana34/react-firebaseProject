@@ -27,9 +27,11 @@ const NoticeForm = () => {
         createdAt: new Date()
 
       });
-      setNotice('');
-      setTitle("")
+
+      setNotice(' ');
+      setTitle(' ')
       notify()
+      window.onload()
     } catch (error) {
       console.error('Error posting notice:', error);
     }
@@ -48,12 +50,12 @@ const NoticeForm = () => {
     <div className="mb-2 block">
           <Label htmlFor="base" value="Notice Title" />
         </div>
-        <TextInput id="base" type="text" placeholder='Write Your Notice Title' sizing="md" onChange={(e) => setTitle(e.target.value)}  required />
+        <TextInput id="base" type="text" placeholder='Write Your Notice Title' sizing="md" value={title} onChange={(e) => setTitle(e.target.value)}  required />
 
     <div className="mb-2 block">
       <Label className=' text-base text-start' htmlFor="comment" value="Notice for users" />
     </div>
-    <Textarea id="comment" className=' resize-none' onChange={(e) => setNotice(e.target.value)}  placeholder="Write a notice" required rows={4} />
+    <Textarea id="comment" className=' resize-none' onChange={(e) => setNotice(e.target.value)} value={notice}  placeholder="Write a notice" required rows={4} />
    
     <Button className='my-2 bg-green-radial ' type="submit" color="blue">Post Notice</Button>
     </div>

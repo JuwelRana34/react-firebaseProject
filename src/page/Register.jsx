@@ -14,6 +14,7 @@ function Register() {
   const [phone, setPhone] = useState('');
   const [bloodGroup, setBloodGroup] = useState('');
   const [fbLink, setfbLink] = useState('');
+  const [HomeDistic, setHomeDistic] = useState('');
   const [registration, setRegistration] = useState(false);
 
 
@@ -39,6 +40,7 @@ function Register() {
         phone,
         bloodGroup,
         fbLink,
+        HomeDistic,
         role: 'user'
       });
       setRegistration(true)
@@ -95,9 +97,15 @@ function Register() {
 
       <div>
         <div className="mb-2 block">
+          <Label htmlFor="HomeDistic" value="Your Home Distic" />
+        </div>
+        <TextInput id="HomeDistic" type="text" placeholder=' your Home distic' value={HomeDistic} onChange={(e) => setHomeDistic(e.target.value)} required />
+      </div>
+      <div>
+        <div className="mb-2 block">
           <Label htmlFor="password1" value="Your password" />
         </div>
-        <TextInput id="password1" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <TextInput id="password1" type="password" placeholder='*****' value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
      
       <Button className=' mt-3 bg-green-radial' type="submit">Register</Button>

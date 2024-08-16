@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection,deleteDoc, doc } from 'firebase/firestore';
 import { db} from '../firebaseConfig';
-
-
+import useAdminCheck from '../hooks/useAdminCheck';
+import {  toast } from 'react-toastify';
 
 function Notice() {
     const [Notice, setNotice] = useState([]);
-
+    const {isAdmin} = useAdminCheck();
   
-
-
+    const notify = () => toast.error('** Logged out succesfully', {
+      theme: "colored",
+    });
 
     useEffect(() => {
       const fetchUNotice = async () => {
@@ -23,6 +24,20 @@ function Notice() {
     const formatDate = (date) => {
       return date.toLocaleString(); // Adjust formatting as needed
     };
+
+
+
+    const handleDelete = async (id) => {
+      if (isAdmin) {
+        await deleteDoc(doc(db, 'notices', id));
+        setNotice(Notice.filter(notice => notice.id !== id));
+        notify()
+      } else {
+        alert("You don't have permission to delete this notice.");
+      }
+    };
+  
+    
 
   return (
     <>
@@ -43,9 +58,25 @@ function Notice() {
 
       <p className="text-justify  text-[#2379c4] mb-2  p-2">{notics.text}</p>
       <p className='m-2'>Posted on: {formatDate(new Date(notics.createdAt.seconds * 1000))}</p>
+
+      {isAdmin && (
+                <div className="flex justify-end m-2">
+                 
+                  <button
+                    onClick={() => handleDelete(notics.id)}
+                    className="bg-red-500 text-white hover:bg-red-600 px-4 py-2 rounded-md"
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
     </div>
     </div>
-          </div> ))}
+          
+      </div> ))}
+
+
+          
 
     </>
     
