@@ -4,11 +4,13 @@ import { db} from '../firebaseConfig';
 import useAdminCheck from '../hooks/useAdminCheck';
 import {  toast } from 'react-toastify';
 
+
+
 function Notice() {
     const [Notice, setNotice] = useState([]);
     const {isAdmin} = useAdminCheck();
   
-    const notify = () => toast.error('** Logged out succesfully', {
+    const notify = () => toast.error('** notice deleted **', {
       theme: "colored",
     });
 
@@ -42,8 +44,8 @@ function Notice() {
   return (
     <>
 
-          <h1 className="text-center font-bold font-mono text-2xl text-black"> জগন্নথ বিশ্ববিদ্যালয়ের আইটি সোসাইটির সকল নোটিস    </h1>
-          <hr className="bg-slate-200 mx-4 w-6/6 h-[1px]"/>
+          <h1 className="text-center font-bold text-orange-500 text-xl my-1 md:text-2xl "> Notice  of Department IHC  </h1>
+          <hr className="  w-5/6 h-[1px] mx-auto"/>
           
             {Notice.map(notics => (
           <div key={notics.id} className="  h-auto w-full mx-auto py-3">
@@ -73,10 +75,7 @@ function Notice() {
     </div>
     </div>
           
-      </div> ))}
-
-
-          
+      </div> ))}  
 
     </>
     

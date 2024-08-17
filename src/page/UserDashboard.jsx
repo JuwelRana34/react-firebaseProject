@@ -1,20 +1,17 @@
 // src/UserDashboard.js
-import LogoutButton from '../components/LogoutButton';
+
 import { useState, useEffect,useContext } from 'react';
 import { db, auth  } from '../firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 // import { Table } from "flowbite-react";
 import { Card, Dropdown } from "flowbite-react";
-// import FileUpload from '../components/ProfilePhotoUpload';
-// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-// import { setDoc } from "firebase/firestore";
 import ProfileContext from "../usercontext/ProfileContext.js"
 import { NavLink } from 'react-router-dom';
 
+
 function UserDashboard() {
   const { userId } = useContext(ProfileContext);
-
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [profilePhotoURL, setProfilePhotoURL] = useState("");
@@ -62,10 +59,10 @@ function UserDashboard() {
   if (!userData) {
     return <div>No user data available</div>;
   }
-const {name, email, role, bloodGroup, phone ,fbLink}= userData
+const {name, email, role, bloodGroup, phone ,fbLink,HomeDistic}= userData
   return (
     <div>
-      <h1 className=' text-2xl w-5/6 mb-4 mx-auto text-center rounded-md py-3 text-white bg-green-400 shadow-lg  shadow-green-300 '>Welcome to your Dashbord <span className=' font-semibold text-[#07273b]' > {name}</span> !</h1>
+      <h1 className=' text-xl md:text-2xl w-5/6 mb-4 mx-auto text-center rounded-md py-3 text-white bg-green-400 shadow-lg  shadow-green-300 '>Welcome to your Dashbord <span className=' font-semibold text-[#07273b]' > {name}</span> !</h1>
 {/* table  */}
 
       {/* <div className="overflow-x-auto my-5">
@@ -104,7 +101,7 @@ const {name, email, role, bloodGroup, phone ,fbLink}= userData
     </div> */}
 
 {/* profile  */}
-<Card className=" w-[95%] md:max-w-sm mx-auto">
+<Card className=" w-[95%] md:max-w-sm mx-auto shadow-lg  my-4 shadow-indigo-300 bg-gradient-to-bl from-indigo-400">
       <div className="flex justify-end px-4 pt-4">
         <Dropdown inline label="">
           <Dropdown.Item>
@@ -115,55 +112,59 @@ const {name, email, role, bloodGroup, phone ,fbLink}= userData
              profile Photo update
             </NavLink>
           </Dropdown.Item>
-          <Dropdown.Item>
-            {/* <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Export Data
-            </a>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Delete
-            </a> */}
-          </Dropdown.Item>
+          
         </Dropdown>
       </div>
       {/* image of profile  */}
       <div className="flex flex-col items-center pb-10">
-      <img src={profilePhotoURL} alt="Profile" className="mb-3 rounded-full shadow-lg h-32 w-32 md:h-40 md:w-40"  />
+      <img src={profilePhotoURL} alt="Profile"  className="mb-3 rounded-full shadow-lg ring-2 ring-white h-32 w-32 md:h-40 md:w-40"  />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{name}</h5>
-        <span className="text-sm text-gray-500 dark:text-gray-400">{email}</span>
+        <span className="text-sm text-indigo-700 dark:text-white">{email}</span>
         <div className="mt-4 mx-auto text-center space-x-3 lg:mt-6">
           <a
             href={fbLink}
-            className="inline-flex items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
+            className="inline-flex items-center rounded-lg   bg-indigo-600 my-3 px-4 py-2 text-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
           >
             facebook
           </a>
 
-          {/* <a
-            href="#"
-            className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-          >
-            Message
-          </a> */}
-          <div className=' text-start'>
-            <h1>Phone: {phone}</h1>
-            <h1>bloodGroup: {bloodGroup}</h1>
-            <h1>status: {role}</h1>
-          </div>
+          {/* <div className=' text-start'>
+            <h1 > <span className=' font-semibold'>Phone: </span> {phone }</h1>
+            <h1> <span className=' font-semibold'>bloodGroup:</span>  {bloodGroup}</h1>
+            <h1> <span className=' font-semibold'> status: </span>{role}</h1>
+            <h1> <span className=' font-semibold'>HomeDistic: </span>  {HomeDistic}</h1>
+
+          </div> */}
+
+        <table className="border-collapse border border-indigo-700 ...">
+
+            <tbody>
+              <tr>
+                <td className="border  border-indigo-400 ...">Phone:</td>
+                <td className="border border-indigo-400 px-2 ...">{phone }</td>
+              </tr>
+              <tr>
+                <td className="border  border-indigo-400 ...">BloodGroup:</td>
+                <td className="border border-indigo-400 px-2 text-red-700 font-medium ...">{bloodGroup}</td>
+              </tr>
+              <tr>
+                <td className="border  border-indigo-400 ...">status:</td>
+                <td className="border border-indigo-400 px-2 uppercase ...">{role}</td>
+              </tr>
+              <tr>
+                <td className="border  border-indigo-400 ...">HomeDistic:</td>
+                <td className="border border-indigo-400 px-2 uppercase ...">{HomeDistic}</td>
+              </tr>
+              
+            </tbody>
+        </table>
 
         </div>
       </div>
       
     </Card>
-    <button ><LogoutButton/> </button>
     
+
     </div>
   );
 }
