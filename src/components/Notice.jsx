@@ -42,7 +42,7 @@ function Notice() {
     
 
   return (
-    <>
+    <div>
 
           <h1 className="text-center font-bold text-orange-500 text-xl my-1 md:text-2xl "> Notice  of Department IHC  </h1>
           <hr className="  w-5/6 h-[1px] mx-auto"/>
@@ -77,7 +77,7 @@ function Notice() {
           
       </div> ))}  
 
-    </>
+    </div>
     
   )
 }

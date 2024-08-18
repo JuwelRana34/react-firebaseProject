@@ -16,6 +16,7 @@ import useAdminCheck from './hooks/useAdminCheck';
 import ProfilePhotoUpload from './components/ProfilePhotoUpload';
 import Qustions from './page/Qustions';
 import ForgotPassword from './components/ForgotPassword ';
+import VideoPage from './page/VideoPage';
 
 
 
@@ -35,6 +36,7 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPassword/>} />
       {user&& <>
       <Route path="/notice" element={<Notice/>} />
+      <Route path="/videos" element={<VideoPage/>} />
       <Route path="/Qustions" element={<Qustions/>} />
       <Route path="/user" element={<UserDashboard />} />
       <Route path="/PhotoUpdate" element={<ProfilePhotoUpload />} />

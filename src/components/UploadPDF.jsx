@@ -73,15 +73,18 @@ function UploadPDF() {
 
   return (
     <div className='m-2 '>
-
-      <div className='mx-auto'>
+  <h1 className=' w-[80%] md:w-[60%] p-3 my-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center'>Upload pdf</h1>
+      <div className='mx-auto w-5/6 md:w-3/6'>
       <div >
         <Label htmlFor="file-upload-helper-text" value="Upload file" />
       </div>
-      <FileInput className=' md:w-[50%] my-2' type="file" accept="application/pdf" onChange={handleFileChange} id="file-upload-helper-text" helperText="Pdf (MAX. 20 MB)." />
+      <FileInput className=' md:w-[80%] my-2' type="file" accept="application/pdf" onChange={handleFileChange} id="file-upload-helper-text" helperText="Pdf (MAX. 20 MB)." />
+
+
+      <Button  onClick={handleUpload}gradientDuoTone="greenToBlue">upload file</Button>
     </div>
 
-      <Button  onClick={handleUpload}gradientDuoTone="greenToBlue">Profile</Button>
+      
       {progress > 0 && <Progress
       progress={progress}
       progressLabelPosition="inside"

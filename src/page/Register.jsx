@@ -17,17 +17,13 @@ function Register() {
   const [HomeDistic, setHomeDistic] = useState('');
   const [registration, setRegistration] = useState(false);
 
-
-  const notify = () => toast.success('🦄 Registration succesfully', {
-    position: "top-right",
-    theme: "colored",
-    });
+  
   const totify = () => toast.error('user alreay register please login !', {
     position: "top-right",
     theme: "colored",
     });
 
-    const emailVerificationNotify = () => toast.info('Please check your email to verify your account.', {
+    const emailVerificationNotify = () => toast.info('🦄 Registration succesfully! Please check your email to verify your account.', {
       position: "top-right",
       theme: "colored",
     });
@@ -51,7 +47,7 @@ function Register() {
       await sendEmailVerification(user);
       emailVerificationNotify();
       setRegistration(true)
-      notify()
+ 
     } catch (error) {
       totify()
       setRegistration(true)

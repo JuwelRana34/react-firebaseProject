@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "mortuzapur-highschool2"
-  }
+    "default": "mortuzapur-highschool2",
+    "firebase deploy --only functions": "juwelrana-7ec61"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

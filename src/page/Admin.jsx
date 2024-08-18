@@ -11,6 +11,7 @@ import { Table } from "flowbite-react";
 import profile from "../assets/images/profile.png"
 // import { deleteUser } from "firebase/auth";
 import { deleteDoc } from "firebase/firestore";
+import PostVideo from '../components/PostVideo';
 
 
 
@@ -40,9 +41,7 @@ function Admin() {
       console.error("Error deleting user: ", error);
     }
   };
-  
-
-
+ 
 //   fatch admin data 
 useEffect(() => {
     const fetchUserData = async (uid) => {
@@ -138,12 +137,16 @@ useEffect(() => {
       </div>
 
 
-
-
         {/* <Notice/> */}
         <NoticeForm/>
-
+      {/* upload pdf  */}
         <UploadPDF/>
+
+    {/* Video Section */}
+    <PostVideo/>
+
+
+
     </div>
   );
 }
