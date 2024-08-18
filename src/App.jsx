@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import useAdminCheck from './hooks/useAdminCheck';
 import ProfilePhotoUpload from './components/ProfilePhotoUpload';
 import Qustions from './page/Qustions';
+import ForgotPassword from './components/ForgotPassword ';
 
 
 
@@ -27,10 +28,11 @@ function App() {
     
     <Router>
       <NavbarMenu/>
+      
       <ToastContainer />
       <Routes>
       <Route path="/" element={<Home/>} />
-
+      <Route path="/forgot-password" element={<ForgotPassword/>} />
       {user&& <>
       <Route path="/notice" element={<Notice/>} />
       <Route path="/Qustions" element={<Qustions/>} />

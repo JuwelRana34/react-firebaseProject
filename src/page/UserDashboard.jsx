@@ -164,7 +164,6 @@ const {name, email, role, bloodGroup, phone ,fbLink,HomeDistic}= userData
       
     </Card>
     
-
     </div>
   );
 }

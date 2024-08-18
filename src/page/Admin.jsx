@@ -9,7 +9,7 @@ import NoticeForm from '../page/NoticeForm'
 import UploadPDF from '../components/UploadPDF';
 import { Table } from "flowbite-react";
 import profile from "../assets/images/profile.png"
-import { deleteUser } from "firebase/auth";
+// import { deleteUser } from "firebase/auth";
 import { deleteDoc } from "firebase/firestore";
 
 
@@ -23,28 +23,21 @@ function Admin() {
 
 
   // user delet 
-  const handleDeleteUser = async (uid) => {
+  const handleDelete = async (userId) => {
     try {
-      // Delete user from Firestore
-      await deleteDoc(doc(db, 'users', uid));
-  
-      // Get the user's Auth user object
-      const user = auth.currentUser;
-  
-      if (user) {
-        // Delete user from Firebase Authentication
-        await deleteUser(user);
-        alert('User deleted successfully');
-      } else {
-        alert('Failed to delete user');
-      }
-  
-      // Refresh the users list after deletion
-      const usersSnapshot = await getDocs(collection(db, 'users'));
-      setUsers(usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      // Delete the user document from Firestore
+      await deleteDoc(doc(db, 'users', userId));
+
+       // Delete the user from Firebase Authentication
+      // const userToDelete = await auth.getUser(userId);
+      // if (userToDelete) {
+      //   await deleteUser(userToDelete);
+      // }
+
+      // Optionally, refresh the user list
+      setUsers(users.filter(user => user.id !== userId));
     } catch (error) {
       console.error("Error deleting user: ", error);
-      alert('Error deleting user');
     }
   };
   
@@ -132,7 +125,7 @@ useEffect(() => {
               <Table.Cell className=' uppercase'>  {user.role} </Table.Cell>
               <Table.Cell>{user.email}</Table.Cell>
               <Table.Cell>
-                <button  onClick={() => handleDeleteUser(user.id)} className="font-medium text-white bg-red-400 py-2 px-3 rounded-md hover:bg-red-500 dark:text-cyan-500">
+                <button  onClick={() => handleDelete(user.id)} className="font-medium text-white bg-red-400 py-2 px-3 rounded-md hover:bg-red-500 dark:text-cyan-500">
                  delet
                 </button>
               </Table.Cell>

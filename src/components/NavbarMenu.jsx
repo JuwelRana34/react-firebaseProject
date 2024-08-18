@@ -16,7 +16,7 @@ function NavbarMenu() {
         <span className="self-center whitespace-nowrap text-2xl font-semibold  dark:text-white">IHC</span>
       </Navbar.Brand>
       <div className="flex md:order-2">
-        {user?<LogoutButton/>: <Link to="/login"> <Button className="bg-green-radial">Login</Button></Link>}
+        {user?<LogoutButton/>: <Link to="/login"> <Button className="bg-green-radial rounded-md py-1 focus:outline-none">Login</Button></Link>}
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>

@@ -1,11 +1,11 @@
 // src/Register.js
 import { useState } from 'react';
 import { auth, db } from '../firebaseConfig';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { Button, Label, TextInput } from "flowbite-react";
 import {  toast } from 'react-toastify';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -27,6 +27,11 @@ function Register() {
     theme: "colored",
     });
 
+    const emailVerificationNotify = () => toast.info('Please check your email to verify your account.', {
+      position: "top-right",
+      theme: "colored",
+    });
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
@@ -43,6 +48,8 @@ function Register() {
         HomeDistic,
         role: 'user'
       });
+      await sendEmailVerification(user);
+      emailVerificationNotify();
       setRegistration(true)
       notify()
     } catch (error) {
@@ -58,7 +65,7 @@ function Register() {
 
   return (
     <>
-    <h1 className=' w-1/2 py-3 text-center text-md md:text-xl font-semibold text-white mx-auto px-4 m-2 bg-blue-500 rounded-md '>Registration Form</h1>
+    <h1 className='w-[80%] p-3 mb-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center '>Registration Form</h1>
     <form onSubmit={handleRegister} className="flex mx-3 md:mx-auto justify-center max-w-md flex-col gap-0">
       <div>
         <div className="mb-2 block">
@@ -108,7 +115,16 @@ function Register() {
         <TextInput id="password1" type="password" placeholder='*****' value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
      
-      <Button className=' mt-3 bg-green-radial' type="submit">Register</Button>
+      <Button className=' mt-3 bg-green-radial text-lg font-medium rounded-md' type="submit">Register</Button>
+
+
+      <div className='flex items-center my-2 justify-center '>
+        <hr className=' border-[1px]  w-[20%] md:w-[30%] border-gray-300' /> 
+        <p className='mx-2 text-gray-400'>Have you account?</p>
+        <hr className='border-[1px] w-[20%] md:w-[30%] border-gray-300' />
+      </div>
+
+      <Link to="/login" className='bg-blue-700 text-white py-1 my-2 rounded-md text-center text-lg font-medium'> Login </Link>
     </form>
 
      </>

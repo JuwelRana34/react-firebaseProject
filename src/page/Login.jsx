@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { Button,  Label, TextInput } from "flowbite-react";
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import {  toast } from 'react-toastify';
 
 const Login = () => {
@@ -14,24 +14,44 @@ const Login = () => {
   const notify = () => toast.success('🦄 Login succesfully', {
     position: "top-right",
     theme: "colored",
-    
     });
 
+    const notifyEmailVerification = () => toast.warning('Please verify your email before logging in.', {
+      position: "top-right",
+      theme: "colored",
+    });
 
 
   const handleLogin = async (e) => {
 
     e.preventDefault();
+    // try {
+    //   await signInWithEmailAndPassword(auth, email, password);
+    //   setIsLoggedIn(true)
+    //   setEmail("")
+    //   setPassword("")
+    //   notify()
+    // } catch (error) {
+    //   console.error('Error logging in:', error);
+    //   toast.error(`${error}`)
+    // }
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      setIsLoggedIn(true)
-      setEmail("")
-      setPassword("")
-      notify()
-    } catch (error) {
-      console.error('Error logging in:', error);
-      toast.error(`${error}`)
-    }
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      if (user.emailVerified) {
+        setIsLoggedIn(true);
+        setEmail("");
+        setPassword("");
+        notify();
+      } else {
+        notifyEmailVerification();
+        auth.signOut();  // Sign out the user if their email is not verified
+      } } catch (error) {
+        console.error('Error logging in:', error);
+        toast.error(`Error: ${error.message}`);
+      }
+
   };
 
 
@@ -40,7 +60,7 @@ const Login = () => {
   }
 
   return (
-
+    <>
     <form onSubmit={handleLogin} className="flex md:mx-auto mx-4 max-w-md flex-col gap-4">
      <div>
        <div className="mb-2 block">
@@ -58,9 +78,15 @@ const Login = () => {
        <Checkbox id="remember" />
        <Label htmlFor="remember">Remember me</Label>
      </div> */}
-     <Button className='bg-green-radial' type="submit">Login</Button>
+     <Button className='bg-green-radial rounded-md' type="submit">Login</Button>
+   <Link to="/forgot-password" className='text-blue-600  hover:underline text-end'> Forgotten password? </Link>
+   <hr />
+   <Link to="/registration" className='bg-lime-600   text-center py-3 rounded-md text-white mb-2'> Create new account </Link>
    </form>
-    
+      <div>
+          
+      </div>
+  </>
      
     
   );

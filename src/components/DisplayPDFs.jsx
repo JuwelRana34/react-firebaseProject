@@ -43,7 +43,7 @@ console.log(pdfs)
 
   return (
     <div>
-      <h2 className='w-[80%] p-3 mb-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center '>Previous PDFs</h2>
+      <h2 className='w-[80%] p-3 mb-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center '>Previous years Qustions PDFs</h2>
 
       
 
