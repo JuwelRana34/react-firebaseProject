@@ -17,6 +17,7 @@ import ProfilePhotoUpload from './components/ProfilePhotoUpload';
 import Qustions from './page/Qustions';
 import ForgotPassword from './components/ForgotPassword ';
 import VideoPage from './page/VideoPage';
+import DisplayPhotos from './page/DisplayPhotos';
 
 
 
@@ -37,6 +38,7 @@ function App() {
       {user&& <>
       <Route path="/notice" element={<Notice/>} />
       <Route path="/videos" element={<VideoPage/>} />
+      <Route path="/photos" element={<DisplayPhotos/>} />
       <Route path="/Qustions" element={<Qustions/>} />
       <Route path="/user" element={<UserDashboard />} />
       <Route path="/PhotoUpdate" element={<ProfilePhotoUpload />} />

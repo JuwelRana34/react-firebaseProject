@@ -25,6 +25,8 @@ function NavbarMenu() {
         <Link to="/notice"><Navbar.Link className="text-red-500" > Notice</Navbar.Link></Link>
         <Link to="/user"><Navbar.Link > Dashboard</Navbar.Link></Link>
         <Link to="/Qustions"><Navbar.Link > Qustions</Navbar.Link></Link>
+        <Link to="/videos"><Navbar.Link > videos</Navbar.Link></Link>
+        <Link to="/photos"><Navbar.Link > Photos</Navbar.Link></Link>
         
         </>}
         

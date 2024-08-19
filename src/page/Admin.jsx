@@ -12,6 +12,8 @@ import profile from "../assets/images/profile.png"
 // import { deleteUser } from "firebase/auth";
 import { deleteDoc } from "firebase/firestore";
 import PostVideo from '../components/PostVideo';
+import PostDriveLink from '../components/PostDriveLink';
+
 
 
 
@@ -97,19 +99,31 @@ useEffect(() => {
 
   return (
     <div >
-      <h1> Welcome to Admin Dashboard {adminData.name} </h1>
-        {/* <li key={user.id}>{user.email}</li> */}
+       <h1 className=' text-xl md:text-2xl w-5/6 mb-4 mx-auto text-center rounded-md py-3 text-white bg-green-400 shadow-lg  shadow-green-300 '>Welcome to Admin Dashboard <span className=' font-semibold text-[#07273b]' > {adminData.name}</span> !</h1>
+      {/* <h1 className='text-xl text-center'> Welcome to Admin Dashboard {adminData.name} </h1> */}
+
+   
+        {/* <Notice/> */}
+        <NoticeForm/>
+      {/* upload pdf  */}
+        <UploadPDF/>
+
+    {/* Video Section */}
+    <PostVideo/>
+
+    <PostDriveLink/>
 
 
-        <div key={user.id} className="overflow-x-auto">
+<div key={user.id} className="overflow-x-auto my-5">
         <Table striped>
           <Table.Head>
             <Table.HeadCell>Photo</Table.HeadCell>
             <Table.HeadCell>Name</Table.HeadCell>
             <Table.HeadCell>role</Table.HeadCell>
             <Table.HeadCell>Email</Table.HeadCell>
+            <Table.HeadCell>batch</Table.HeadCell>
             <Table.HeadCell>
-              <span className="sr-only">Edit</span>
+              Contact
             </Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
@@ -123,28 +137,19 @@ useEffect(() => {
               <Table.Cell className=' capitalize'>{user.name}</Table.Cell>
               <Table.Cell className=' uppercase'>  {user.role} </Table.Cell>
               <Table.Cell>{user.email}</Table.Cell>
+              <Table.Cell>{user.batch}</Table.Cell>
               <Table.Cell>
                 <button  onClick={() => handleDelete(user.id)} className="font-medium text-white bg-red-400 py-2 px-3 rounded-md hover:bg-red-500 dark:text-cyan-500">
-                 delet
+                 Delete
                 </button>
               </Table.Cell>
             </Table.Row>
 
         ))}
 
-  </Table.Body>
+    </Table.Body>
         </Table>
       </div>
-
-
-        {/* <Notice/> */}
-        <NoticeForm/>
-      {/* upload pdf  */}
-        <UploadPDF/>
-
-    {/* Video Section */}
-    <PostVideo/>
-
 
 
     </div>

@@ -7,17 +7,36 @@ import { Button, Label, TextInput } from "flowbite-react";
 import {  toast } from 'react-toastify';
 import { Link, Navigate } from 'react-router-dom';
 
+const locations = [
+  "Dhaka", "Faridpur", "Gazipur", "Gopalganj", "Jamalpur", "Kishoreganj",
+  "Madaripur", "Manikganj", "Munshiganj", "Mymensingh", "Narayanganj",
+  "Narsingdi", "Netrokona", "Rajbari", "Shariatpur", "Sherpur", "Tangail",
+  "Bogra", "Joypurhat", "Naogaon", "Natore", "Nawabganj", "Pabna",
+  "Rajshahi", "Sirajgonj", "Dinajpur", "Gaibandha", "Kurigram",
+  "Lalmonirhat", "Nilphamari", "Panchagarh", "Rangpur", "Thakurgaon",
+  "Barguna", "Barisal", "Bhola", "Jhalokati", "Patuakhali", "Pirojpur",
+  "Bandarban", "Brahmanbaria", "Chandpur", "Chittagong", "Comilla",
+  "Cox's Bazar", "Feni", "Khagrachari", "Lakshmipur", "Noakhali",
+  "Rangamati", "Habiganj", "Maulvibazar", "Sunamganj", "Sylhet",
+  "Bagerhat", "Chuadanga", "Jessore", "Jhenaidah", "Khulna",
+  "Kushtia", "Magura", "Meherpur", "Narail", "Satkhira"
+];
+
+const Batchs = [ "17th" , "18th" , "19th"]
+
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [bloodGroup, setBloodGroup] = useState('');
+  const [batch, setBatch] = useState('');
   const [fbLink, setfbLink] = useState('');
-  const [HomeDistic, setHomeDistic] = useState('');
   const [registration, setRegistration] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState('');
+  const [gender, setGender] = useState(''); // New state for gender
 
-  
+
+
   const totify = () => toast.error('user alreay register please login !', {
     position: "top-right",
     theme: "colored",
@@ -39,9 +58,10 @@ function Register() {
         email,
         name,
         phone,
-        bloodGroup,
+        batch,
         fbLink,
-        HomeDistic,
+        selectedLocation,
+        gender,
         role: 'user'
       });
       await sendEmailVerification(user);
@@ -84,12 +104,12 @@ function Register() {
         <TextInput id="phone" type="number" placeholder='Namber' value={phone} onChange={(e) => setPhone(e.target.value)}  required />
       </div>
 
-      <div>
+      {/* <div>
         <div className="mb-2 block">
           <Label htmlFor="Blood Group" value="Your Blood Group" />
         </div>
         <TextInput id="Blood Group" type="text" placeholder='ex: B+,O-' value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} required />
-      </div>
+      </div> */}
 
       <div>
         <div className="mb-2 block">
@@ -98,12 +118,53 @@ function Register() {
         <TextInput id="facebook link" type="text" placeholder="https://www.facebook.com/xxx" value={fbLink} onChange={(e) => setfbLink(e.target.value)}  required />
       </div>
 
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="HomeDistic" value="Your Home Distic" />
+
+      <div className="my-4 ">
+          <div className="mb-2 block">
+            <Label htmlFor="gender" value="Gender" />
+          </div>
+          <div>
+            <label className="inline-flex items-center">
+              <input type="radio" value="Male" checked={gender === 'Male'} onChange={() => setGender('Male')} className="form-radio" />
+              <span className="ml-2">Male</span>
+            </label>
+            <label className="inline-flex items-center ml-4">
+              <input type="radio" value="Female" checked={gender === 'Female'} onChange={() => setGender('Female')} className="form-radio" />
+              <span className="ml-2">Female</span>
+            </label>
+          </div>
         </div>
-        <TextInput id="HomeDistic" type="text" placeholder=' your Home distic' value={HomeDistic} onChange={(e) => setHomeDistic(e.target.value)} required />
-      </div>
+
+
+      <label className='my-4 font-medium'>
+        HomeDistict:
+        <select className='mx-2'
+          value={selectedLocation}
+          onChange={(e) => setSelectedLocation(e.target.value)}
+          required
+        >
+          <option  value="">Select your HomeDistict</option>
+          {locations.map((location, index) => (
+            <option key={index} value={location}>{location}</option>
+          ))}
+        </select>
+      </label>
+
+      <label className='my-4 font-medium'>
+        Batch:
+        <select className='mx-2'
+          value={batch}
+          onChange={(e) => setBatch(e.target.value)}
+          required
+        >
+          <option  value="">Select your Batch</option>
+          {Batchs.map((Batch, index) => (
+            <option key={index} value={Batch}>{Batch}</option>
+          ))}
+        </select>
+      </label>
+
+
       <div>
         <div className="mb-2 block">
           <Label htmlFor="password1" value="Your password" />

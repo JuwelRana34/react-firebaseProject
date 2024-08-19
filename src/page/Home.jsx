@@ -5,7 +5,7 @@ import image4 from '../assets/images/04.jpg'
 import image5 from '../assets/images/05.jpg'
 import image6 from '../assets/images/06.jpg'
 import image7 from '../assets/images/07.jpg'
-import { Carousel } from "flowbite-react";
+import { Carousel, Card   } from "flowbite-react";
 
 function Home() {
   
@@ -22,6 +22,24 @@ function Home() {
         <img src={image7} className=' object-center object-contain ' alt="..." />
       </Carousel>
     </div>
+
+    <Card  className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
+      <h5 className="text-2xl font-bold tracking-tight ">
+        Jagannath university Udoyon-18
+      </h5>
+      <p className="font-normal">
+      আসসালামু আলাইকুম।
+      জগন্নাথ বিশ্ববিদ্যালয়,ইসলামের ইতিহাস ও সংস্কৃতি বিভাগের ১৮ তম ব্যাচের একটি ওয়েবসাইট। ওয়েবসাইটটি ১৮ তম ব্যাচের প্রয়োজনে  তৈরি করা হয়েছে। ওয়েবসাইটে যে সব বিষয় থাকবে।
+      ১.ব্যাচের প্রত্যেক সহপাঠীর ব্যাক্তিগত প্রোফাইল 
+      ২.পড়াশোনার বিভিন্ন বিষয়ের নোটস ফাইল আকারে থাকবে।
+      ৩.নিয়মিত নোটিশ দেওয়া হবে।
+      ৪.ডিপার্টমেন্ট ও ব্যাচের বিভিন্ন ইভেন্টের ফটো ও ভিডিও ফাইল আকারে থাকবে।
+      </p>
+    </Card>
+
+    <iframe className='w-4/6 h-96 mx-auto' src="https://www.youtube.com/embed/lIOLrZgZfAg? si=4nCEhAd3CQ0we6DK" ></iframe>
+
+    
       
     </div>
   )
