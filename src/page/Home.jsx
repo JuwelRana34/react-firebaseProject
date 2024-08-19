@@ -37,7 +37,7 @@ function Home() {
       </p>
     </Card>
 
-    <iframe className='w-4/6 h-96 mx-auto' src="https://www.youtube.com/embed/lIOLrZgZfAg? si=4nCEhAd3CQ0we6DK" ></iframe>
+    <iframe className='w-full md:w-4/6 text-justify px-2  h-96 mx-auto' src="https://www.youtube.com/embed/lIOLrZgZfAg? si=4nCEhAd3CQ0we6DK" ></iframe>
 
     
       

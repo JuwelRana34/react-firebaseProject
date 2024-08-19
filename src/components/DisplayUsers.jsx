@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { db } from '../firebaseConfig'; // Adjust the path as needed
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db ,auth } from '../firebaseConfig'; // Adjust the path as needed
+import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { Table ,Alert  } from "flowbite-react";
 import profile from "../assets/images/profile.png"
 
@@ -23,6 +23,9 @@ const DisplayUsers = () => {
   const [selectedLocation, setSelectedLocation] = useState('');
   const [users, setUsers] = useState([]);
 
+  const [currentUserGender, setCurrentUserGender] = useState(''); // State to store the current user's gender
+
+
   // Function to fetch users based on selected location
   const fetchUsers = async (location) => {
     try {
@@ -34,6 +37,27 @@ const DisplayUsers = () => {
       console.error('Error fetching users:', error);
     }
   };
+
+
+
+   // Fetch current user's gender
+   useEffect(() => {
+    const fetchCurrentUserGender = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setCurrentUserGender(docSnap.data().gender);
+        }
+      }
+    };
+
+    fetchCurrentUserGender();
+  }, []);
+
+
+  // Fetch users when location changes
 
   useEffect(() => {
     if (selectedLocation) {
@@ -88,8 +112,18 @@ const DisplayUsers = () => {
                 <img src={user.profilePhotoURL || profile } className='h-10 w-10 md:h-16 md:w-16 rounded-full' alt="" />              
               </Table.Cell>
               <Table.Cell className=' capitalize'>{user.name}</Table.Cell>
-              <Table.Cell className=' uppercase'>  {user.phone} </Table.Cell>
-              <Table.Cell>{user.email}</Table.Cell>
+              <Table.Cell className=' uppercase'> 
+                 {/* {user.phone} */}
+               
+                 {/* Conditionally render phone number based on gender visibility */}
+                 {(currentUserGender === 'Male' && user.gender !== 'Female') || (currentUserGender === 'Female' && user.gender !== 'Male') ? user.phone : '******'}
+                 </Table.Cell>
+              <Table.Cell>
+                {/* {user.email} */}
+                {/* Conditionally render email based on gender visibility */}
+                {(currentUserGender === 'Male' && user.gender !== 'Female') || (currentUserGender === 'Female' && user.gender !== 'Male') ? user.email : '******'}
+
+              </Table.Cell>
               <Table.Cell>
               <a  href={user.fbLink} className="font-medium text-white bg-blue-500 py-2 px-3 rounded-md hover:bg-blue-600 dark:text-cyan-500">
                  Facebook

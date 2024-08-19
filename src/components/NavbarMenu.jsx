@@ -11,16 +11,19 @@ function NavbarMenu() {
   return (
    <>
       <Navbar fluid rounded className=" shadow-lg mb-5">
-      <Navbar.Brand href="#">
+        <Link to="/">
+      <Navbar.Brand href="">
         <img src={logo} className="mr-3 h-12 md:h-14 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap text-2xl font-semibold  dark:text-white">IHC</span>
       </Navbar.Brand>
+      </Link>
       <div className="flex md:order-2">
         {user?<LogoutButton/>: <Link to="/login"> <Button className="bg-green-radial rounded-md py-1 focus:outline-none">Login</Button></Link>}
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
         <Link to="/"><Navbar.Link active> Home</Navbar.Link></Link>
+        <Link to="/contactcr"><Navbar.Link > ContactCR</Navbar.Link></Link>
         {user&& <>
         <Link to="/notice"><Navbar.Link className="text-red-500" > Notice</Navbar.Link></Link>
         <Link to="/user"><Navbar.Link > Dashboard</Navbar.Link></Link>

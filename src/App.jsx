@@ -18,6 +18,7 @@ import Qustions from './page/Qustions';
 import ForgotPassword from './components/ForgotPassword ';
 import VideoPage from './page/VideoPage';
 import DisplayPhotos from './page/DisplayPhotos';
+import ContactCR from './page/ContactCR';
 
 
 
@@ -34,16 +35,18 @@ function App() {
       <ToastContainer />
       <Routes>
       <Route path="/" element={<Home/>} />
+      <Route path="/contactcr" element={<ContactCR/>} />
       <Route path="/forgot-password" element={<ForgotPassword/>} />
       {user&& <>
       <Route path="/notice" element={<Notice/>} />
+      
       <Route path="/videos" element={<VideoPage/>} />
       <Route path="/photos" element={<DisplayPhotos/>} />
       <Route path="/Qustions" element={<Qustions/>} />
       <Route path="/user" element={<UserDashboard />} />
       <Route path="/PhotoUpdate" element={<ProfilePhotoUpload />} />
       </>}
-      {isAdmin&& <Route path="/Admin" element={<Admin />} />}
+      {isAdmin && <Route path="/Admin" element={<Admin />} />}
       <Route path="/login" element={<Login />} />
       <Route path="/registration" element={<Register />} />
 
