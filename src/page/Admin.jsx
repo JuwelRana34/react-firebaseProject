@@ -101,7 +101,6 @@ useEffect(() => {
     <div >
        <h1 className=' text-xl md:text-2xl w-5/6 mb-4 mx-auto text-center rounded-md py-3 text-white bg-green-400 shadow-lg  shadow-green-300 '>Welcome to Admin Dashboard <span className=' font-semibold text-[#07273b]' > {adminData.name}</span> !</h1>
       {/* <h1 className='text-xl text-center'> Welcome to Admin Dashboard {adminData.name} </h1> */}
-
    
         {/* <Notice/> */}
         <NoticeForm/>
