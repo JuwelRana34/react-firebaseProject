@@ -61,7 +61,7 @@ const ProfilePhotoUpload = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100) ;
         setUploadProgress(progress);
       },
       (error) => {
@@ -103,12 +103,12 @@ const ProfilePhotoUpload = () => {
     </Alert>}
 
       <button onClick={handleUpload} className="bg-green-radial m-2 text-white px-4 py-3 rounded-md">Upload</button>
-
-      {/* <p className=" bg-fuchsia-900 text-white p-2 w-[90%] md:w-[35%]">Upload Progress: {uploadProgress}%</p> */}
+{/* 
+      <p className=" bg-fuchsia-900 text-white p-2 w-[90%] md:w-[35%]">Upload Progress: {uploadProgress}%</p> */}
       {uploadProgress > 0 && <Progress  progress={uploadProgress} textLabel="Uploading..." size="lg"  labelProgress labelText /> 
       
      }
-      
+  
       {showPopup && (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-50">
           <div className="bg-white p-5 w-[80%] md:w-[40%]  rounded-lg">
@@ -116,7 +116,9 @@ const ProfilePhotoUpload = () => {
             <p className=" py-5">Profile photo uploaded successfully!</p>
             <button onClick={anotherpage} className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2">Close</button>
           </div>
-        </div>
+        </div> 
+
+              
 
       )}
 
