@@ -9,6 +9,7 @@ import { Card, Dropdown } from "flowbite-react";
 import ProfileContext from "../usercontext/ProfileContext.js"
 import { NavLink } from 'react-router-dom';
 import DisplayUsers from '../components/DisplayUsers.jsx';
+import SearchUser from "../components/SearchUser.jsx";
 
 
 function UserDashboard() {
@@ -69,51 +70,15 @@ const {name, email, role, batch, phone ,fbLink,selectedLocation }= userData
 return (
     <div>
       <h1 className=' text-xl md:text-2xl w-5/6 mb-4 mx-auto text-center rounded-md py-3 text-white bg-green-400 shadow-lg  shadow-green-300 '>Welcome to your Dashbord <span className=' font-semibold text-[#07273b]' > {name}</span> !</h1>
-{/* table  */}
 
-      {/* <div className="overflow-x-auto my-5">
-      <Table>
-        <Table.Head>
-          <Table.HeadCell>name</Table.HeadCell>
-          <Table.HeadCell>email</Table.HeadCell>
-          <Table.HeadCell>Role</Table.HeadCell>
-          <Table.HeadCell>bloodGroup</Table.HeadCell>
-          <Table.HeadCell>uid</Table.HeadCell>
-          <Table.HeadCell>update</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
-        </Table.Head>
 
-        <Table.Body className="divide-y">
-          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {name}
-            </Table.Cell>
-            <Table.Cell>{email}</Table.Cell>
-            <Table.Cell>{role}</Table.Cell>
-            <Table.Cell>{bloodGroup}</Table.Cell>
-            <Table.Cell>{uid}</Table.Cell>
-            
-            <Table.Cell>
-              <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                Edit
-              </a>
-            </Table.Cell>
-          </Table.Row>
-
-        </Table.Body>
-      </Table>
-    </div> */}
-
-{/* profile  */}
 <Card className=" w-[95%] md:max-w-sm mx-auto shadow-lg  my-4 shadow-indigo-300 bg-gradient-to-bl from-indigo-400">
-      <div className="flex justify-end px-4 pt-4">
+      <div className="flex text-white justify-end px-4 pt-4">
 
       
         <Dropdown  inline label="">
 
-          <Dropdown.Item >
+          <Dropdown.Item  >
             <NavLink to="/PhotoUpdate"
              
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -169,7 +134,12 @@ return (
       </div>
       
     </Card>
+
     <DisplayUsers/>
+    <hr className="mx-5"/>
+    <SearchUser/>
+    
+
     </div>
   );
 }

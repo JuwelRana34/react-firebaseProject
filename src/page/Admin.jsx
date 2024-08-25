@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig';
-// import Notice from '../components/Notice';
+import { Accordion } from "flowbite-react";
 import NoticeForm from '../page/NoticeForm'
 import UploadPDF from '../components/UploadPDF';
 import { Table } from "flowbite-react";
@@ -115,8 +115,14 @@ useEffect(() => {
 
     <ImageLinkForm/>
 
+    {/* ++++++++++++++++++++ users +++++++++++++++++++++++++++ */}
 
-<div key={user.id} className="overflow-x-auto my-5">
+    <Accordion collapseAll className='mx-3'>
+
+      <Accordion.Panel>
+        <Accordion.Title className='text-green-500'>You want to see users? just click on it.</Accordion.Title>
+        <Accordion.Content>
+        <div key={user.id} className="overflow-x-auto my-5">
         <Table striped>
           <Table.Head>
             <Table.HeadCell>Photo</Table.HeadCell>
@@ -152,6 +158,18 @@ useEffect(() => {
     </Table.Body>
         </Table>
       </div>
+
+        </Accordion.Content>
+      </Accordion.Panel>
+
+    </Accordion>
+    {/* +++++++++++++++++++++++++++++++++++++++++++++++ */}
+
+
+    
+
+
+
 
 
     </div>

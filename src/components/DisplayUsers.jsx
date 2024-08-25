@@ -68,8 +68,8 @@ const DisplayUsers = () => {
   }, [selectedLocation]);
 
   return (
-    <div className='m-5'> 
-      <label>
+    <div className='m-5 text-center mx-auto'> 
+      <label className='text-lg font-semibold'>
         Select Location for find student:
         <select className=' mx-2 my-5'
           value={selectedLocation}
