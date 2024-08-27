@@ -6,7 +6,7 @@ import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig';
 import { Accordion } from "flowbite-react";
 import NoticeForm from '../page/NoticeForm'
-import UploadPDF from '../components/UploadPDF';
+// import UploadPDF from '../components/UploadPDF';
 import { Table } from "flowbite-react";
 import profile from "../assets/images/profile.png"
 // import { deleteUser } from "firebase/auth";
@@ -14,6 +14,7 @@ import { deleteDoc } from "firebase/firestore";
 import PostVideo from '../components/PostVideo';
 // import PostDriveLink from '../components/PostDriveLink';
 import ImageLinkForm from '../components/ImageLinkForm';
+import PostPDF from '../components/PostPDF';
 
 
 
@@ -106,7 +107,10 @@ useEffect(() => {
         {/* <Notice/> */}
         <NoticeForm/>
       {/* upload pdf  */}
-        <UploadPDF/>
+        {/* <UploadPDF/> */}
+     
+        <PostPDF/>
+
 
     {/* Video Section */}
     <PostVideo/>

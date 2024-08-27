@@ -10,7 +10,10 @@ import { Carousel, Card   } from "flowbite-react";
 function Home() {
   
   return (
-    <div>
+    <>
+
+
+
        <div className="h-56   md:w-5/6 mx-auto sm:h-64 md:h-[80vh] ">
       <Carousel>
         <img src={image1} className=' object-center object-contain '  alt="..." />
@@ -23,6 +26,7 @@ function Home() {
       </Carousel>
     </div>
 
+  <h1 className=' capitalize w-1/2 mx-auto bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA] text-white text-xl text-center py-2 mt-4 rounded-xl'> about us</h1>
     <Card  className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
       <h5 className="text-2xl font-bold tracking-tight ">
         Jagannath university Udoyon-18
@@ -41,7 +45,7 @@ function Home() {
 
     
       
-    </div>
+    </>
   )
 }
 

@@ -81,7 +81,7 @@ function UploadPDF() {
       <FileInput className=' md:w-[80%] my-2' type="file" accept="application/pdf" onChange={handleFileChange} id="file-upload-helper-text" helperText="Pdf (MAX. 20 MB)." />
 
 
-      <Button  onClick={handleUpload}gradientDuoTone="greenToBlue">upload file</Button>
+      <Button  onClick={handleUpload} gradientDuoTone="greenToBlue">upload file</Button>
     </div>
 
       

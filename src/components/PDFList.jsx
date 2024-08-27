@@ -1,0 +1,95 @@
+import { useEffect, useState } from "react";
+import { collection, getDocs, query, orderBy, deleteDoc, doc } from "firebase/firestore";
+import { db } from "../firebaseConfig"; // Adjust the path accordingly
+import useAdminCheck from '../hooks/useAdminCheck';
+import pdflogo from '../assets/images/pdfIcon.png';
+import { toast } from "react-toastify";
+
+const PDFList = () => {
+  const [pdfLinks, setPdfLinks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { isAdmin } = useAdminCheck();
+
+  useEffect(() => {
+    // Function to fetch PDF links from Firestore, ordered by creation date
+    const fetchPDFLinks = async () => {
+      const q = query(collection(db, "pdfs"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
+      const links = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setPdfLinks(links);
+      setLoading(false)
+      
+    };
+
+    fetchPDFLinks();
+  }, []);
+
+  // Function to delete a PDF link from Firestore
+  const handleDelete = async (id) => {
+    try {
+      // Delete the document with the specified ID from the Firestore collection
+      await deleteDoc(doc(db, "pdfs", id));
+      // Update the state to remove the deleted link from the list
+      setPdfLinks((prevLinks) => prevLinks.filter((pdf) => pdf.id !== id));
+      toast.success("pdf file delete successfully!")
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+      toast.error(error)
+    }
+  };
+
+  return (
+    <>
+    
+    <div>
+      <h2 className='w-[80%] p-3 mb-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center'>
+        Previous Years Questions PDFs
+      </h2>
+
+      {loading ? (
+        <p className="text-center">Loading PDFs...</p>
+      ) : (
+        <div className='container w-full md:w-[60%] mx-auto'>
+          <div className='m-2 md:m-4 md:mt-10 md:ml-10'>
+            {pdfLinks.map((pdf) => (
+              <li
+                key={pdf.id}
+                className='flex items-center mx-auto font-semibold w-auto bg-gray-200 rounded-lg mb-2 p-2'
+              >
+                <img src={pdflogo} alt="" className='mr-2 h-10 w-10' />
+                {pdf.name}
+
+                <div className='md:flex'>
+
+                <a href={pdf.link} download={pdf.name}>
+                    <button
+                        className='py-2 w-24 text-center m-2 text-white rounded-md bg-green-400 hover:bg-green-500'>
+                        Download
+                    </button>
+                </a>
+
+                  {isAdmin && (
+                    <button
+                      className='py-2 w-24 text-center m-2 text-white rounded-md bg-red-400 hover:bg-red-700'
+                      onClick={() => handleDelete(pdf.id)}
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
+              </li>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+    
+    
+    </>
+  );
+};
+
+export default PDFList;
