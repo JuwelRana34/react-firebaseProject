@@ -4,10 +4,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { storage, db } from "../firebaseConfig";
 import ProfileContext from "../usercontext/ProfileContext.js"
-import { FaCheckCircle } from "react-icons/fa";
+// import { FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { HiInformationCircle } from "react-icons/hi";
 import { Alert , FileInput, Label, Progress } from "flowbite-react";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 
 
@@ -111,8 +112,12 @@ const ProfilePhotoUpload = () => {
   
       {showPopup && (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-50">
-          <div className="bg-white p-5 w-[80%] md:w-[40%]  rounded-lg">
-          <FaCheckCircle className="h-10 w-10 text-green-400"/>
+          <div className="bg-white text-center p-5 w-[80%] md:w-[40%]  rounded-lg">
+          <Player className="h-28 w-full text-start"
+          src="https://lottie.host/399624a7-4b61-458b-a413-f843b0707582/1wVGxXC8DC.json"
+          loop
+          autoplay
+          />
             <p className=" py-5">Profile photo uploaded successfully!</p>
             <button onClick={anotherpage} className="bg-blue-500 text-white px-4 py-2 rounded-md mt-2">Close</button>
           </div>

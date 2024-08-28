@@ -5,6 +5,7 @@ import { auth } from '../firebaseConfig';
 import { Button,  Label, TextInput } from "flowbite-react";
 import { Link, Navigate } from 'react-router-dom';
 import {  toast } from 'react-toastify';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -61,6 +62,12 @@ const Login = () => {
 
   return (
     <>
+    <Player
+     src='https://lottie.host/3030bf88-6f29-48ee-b731-1e18dd360367/sWO6FhFAMD.json'
+     loop
+     autoplay
+     className="player"
+    />
     <form onSubmit={handleLogin} className="flex md:mx-auto mx-4 max-w-md flex-col gap-4">
      <div>
        <div className="mb-2 block">

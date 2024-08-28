@@ -6,6 +6,7 @@ import image5 from '../assets/images/05.jpg'
 import image6 from '../assets/images/06.jpg'
 import image7 from '../assets/images/07.jpg'
 import { Carousel, Card   } from "flowbite-react";
+import { Player } from '@lottiefiles/react-lottie-player';
 
 function Home() {
   
@@ -40,6 +41,16 @@ function Home() {
       ৪.ডিপার্টমেন্ট ও ব্যাচের বিভিন্ন ইভেন্টের ফটো ও ভিডিও ফাইল আকারে থাকবে।
       </p>
     </Card>
+
+    <Player
+     src="https://lottie.host/db331ee6-a947-43c4-addc-b79f2ffda203/Kf7xIksVZa.json"
+      className="player"
+      autoplay
+     loop
+     
+    
+
+    />
 
     <iframe className='w-full md:w-4/6 text-justify px-2  h-96 mx-auto' src="https://www.youtube.com/embed/lIOLrZgZfAg? si=4nCEhAd3CQ0we6DK" ></iframe>
 
