@@ -27,6 +27,9 @@ function Home() {
       </Carousel>
     </div>
 
+  
+    
+
   <h1 className=' capitalize w-1/2 mx-auto bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA] text-white text-xl text-center py-2 mt-4 rounded-xl'> about us</h1>
     <Card  className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
       <h5 className="text-2xl font-bold tracking-tight ">

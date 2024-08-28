@@ -20,6 +20,7 @@ import VideoPage from './page/VideoPage';
 
 import ContactCR from './page/ContactCR';
 import ImageGallery from './components/ImageGallery';
+import BirthdayWish from './components/BirthdayWish';
 
 
 
@@ -31,6 +32,7 @@ function App() {
 
     
     <Router>
+        <BirthdayWish/>
       <NavbarMenu/>
       
       <ToastContainer />

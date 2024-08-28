@@ -73,10 +73,9 @@ return (
 
 
 <Card className=" w-[95%] md:max-w-sm mx-auto shadow-lg  my-4 shadow-indigo-300 bg-gradient-to-bl from-indigo-400">
-      <div className="flex text-white justify-end px-4 pt-4">
+      <div className="flex text-white justify-end px-4 pt-4 ">
 
-      
-        <Dropdown  inline label="">
+        <Dropdown  inline label="" >
 
           <Dropdown.Item  >
             <NavLink to="/PhotoUpdate"
@@ -86,15 +85,19 @@ return (
              profile Photo update
             </NavLink>
           </Dropdown.Item>
-
-
+          
      
 
         </Dropdown>
       </div>
       {/* image of profile  */}
       <div className="flex flex-col items-center pb-10">
-      <img src={profilePhotoURL || profile } alt="Profile"  className="mb-3 rounded-full shadow-lg ring-2 ring-white h-32 w-32 md:h-40 md:w-40"  />
+
+        
+      <img src={profilePhotoURL || profile } alt="Profile"  className="mb-3 rounded-full shadow-lg ring-2 ring-white h-32 w-32 md:h-40 md:w-40 "  />
+     
+        
+
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{name}</h5>
         <span className="text-sm text-indigo-700 dark:text-white">{email}</span>
         <div className="mt-4 mx-auto text-center space-x-3 lg:mt-6">

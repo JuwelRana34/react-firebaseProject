@@ -3,9 +3,13 @@ import { useState } from 'react';
 import { auth, db } from '../firebaseConfig';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
-import { Button, Label, TextInput } from "flowbite-react";
+import { Button, Label, TextInput} from "flowbite-react";
 import {  toast } from 'react-toastify';
 import { Link, Navigate } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+
 
 const locations = [
   "Dhaka", "Faridpur", "Gazipur", "Gopalganj", "Jamalpur", "Kishoreganj",
@@ -34,7 +38,7 @@ function Register() {
   const [registration, setRegistration] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState('');
   const [gender, setGender] = useState(''); // New state for gender
-
+  const [dob, setDob] = useState(new Date()); // New state for Date of Birth
 
 
   const totify = () => toast.error('user alreay register please login !', {
@@ -62,6 +66,7 @@ function Register() {
         fbLink,
         selectedLocation,
         gender,
+        dob,
         role: 'user'
       });
       await sendEmailVerification(user);
@@ -110,6 +115,26 @@ function Register() {
         </div>
         <TextInput id="Blood Group" type="text" placeholder='ex: B+,O-' value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} required />
       </div> */}
+
+
+<div>
+          <div className="mb-2 block">
+            <Label htmlFor="dob" value="Date of Birth" />
+          </div>
+          <DatePicker
+            selected={dob}
+            onChange={(date) => setDob(date)}
+            dateFormat="dd/MM/yyyy"
+            className="w-full p-2 border rounded-md"
+            maxDate={new Date()} // Prevent future dates
+            showYearDropdown
+            scrollableYearDropdown
+            required
+          />
+        </div>
+
+
+
 
       <div>
         <div className="mb-2 block">
