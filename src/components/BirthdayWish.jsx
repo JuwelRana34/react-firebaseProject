@@ -44,7 +44,11 @@ const BirthdayWish = () => {
     fetchUsers();
   }, []);
 
-  const Buser =  birthdayUsers.length
+  // const Buser = () =>{
+    
+  //   if(birthdayUsers.length > 1)
+  //     return true
+  // }  
   
   if (birthdayUsers.length === 0) {
     return null; // Hide the component when there are no birthdays
@@ -53,7 +57,7 @@ const BirthdayWish = () => {
   return (
     <>
     {/* <div className=" text-white bg-gradient-to-l from-[#c471f5] to-[#fa71cd] py-3 text-sm px-4 text-center"> */}
-    <div className=" bg-gradient-to-r from-cyan-500 to-blue-500 text-white  py-3  px-4 text-center">
+    <div className=" bg-gradient-to-r  text-xs md:text-base from-cyan-500 to-blue-500 text-white  py-1  px-4 text-center">
       {birthdayUsers.length > 0 && (
         <div className="birthday-wish">
           {birthdayUsers.map((user, index) => (
@@ -61,7 +65,9 @@ const BirthdayWish = () => {
               {currentUser && currentUser.id === user.id ? (
                 <h2> 🎉 Happy Birthday, {user.name}! 🎂</h2>
               ) : (
-                <h2> 🎉 It's {user.name}'s birthday 🎂 today! Wish  them well! <i className="text-black">👨‍🎓 Batch:{user.batch}</i></h2>
+                 <h2> 🎉 It's {user.name}'s birthday 🎂 today! Wish
+                 him   well! <i className="text-black">👨‍🎓 Batch:{user.batch}</i></h2>
+                
               )}
             </div>
           ))}

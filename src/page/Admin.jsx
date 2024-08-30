@@ -124,8 +124,9 @@ useEffect(() => {
     <Accordion collapseAll className='mx-3'>
 
       <Accordion.Panel>
-        <Accordion.Title className='text-green-500'>You want to see users? just click on it.</Accordion.Title>
+        <Accordion.Title className='text-green-500'> <p className=' text-fuchsia-800 inline'>total users = { users.length}</p>  You want to see users? just click on it. </Accordion.Title>
         <Accordion.Content>
+
         <div key={user.id} className="overflow-x-auto my-5">
         <Table striped>
           <Table.Head>
