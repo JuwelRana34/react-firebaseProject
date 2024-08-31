@@ -30,6 +30,7 @@ function NavbarMenu() {
         <Link to="/Qustions"><Navbar.Link > Qustions</Navbar.Link></Link>
         <Link to="/videos"><Navbar.Link > videos</Navbar.Link></Link>
         <Link to="/photos"><Navbar.Link > Photos</Navbar.Link></Link>
+        <Link to="/Students"><Navbar.Link > Students</Navbar.Link></Link>
         
         </>}
         

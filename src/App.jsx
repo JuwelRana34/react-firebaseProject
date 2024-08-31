@@ -21,6 +21,7 @@ import VideoPage from './page/VideoPage';
 import ContactCR from './page/ContactCR';
 import ImageGallery from './components/ImageGallery';
 import BirthdayWish from './components/BirthdayWish';
+import Allstudents from './components/Allstudents';
 
 
 
@@ -42,7 +43,7 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPassword/>} />
       {user&& <>
       <Route path="/notice" element={<Notice/>} />
-      
+      <Route path="/Students" element={<Allstudents/>} />
       <Route path="/videos" element={<VideoPage/>} />
       <Route path="/photos" element={<ImageGallery/>} />
       <Route path="/Qustions" element={<Qustions/>} />
