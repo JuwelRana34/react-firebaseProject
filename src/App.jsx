@@ -1,5 +1,5 @@
 // src/App.js
-
+// import { useState,useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
 import Register from './page/Register';
 import Login from './page/Login';
@@ -24,14 +24,15 @@ import BirthdayWish from './components/BirthdayWish';
 import Allstudents from './components/Allstudents';
 
 
-
 function App() {
   
   const {isAdmin,user} = useAdminCheck();
- 
+
+
   return (
 
-    
+    <>
+
     <Router>
         <BirthdayWish/>
       <NavbarMenu/>
@@ -59,7 +60,7 @@ function App() {
       <Footer/>
       
     </Router>
-    
+    </>
     
   );
 }

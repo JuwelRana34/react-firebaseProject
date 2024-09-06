@@ -1,55 +1,74 @@
-import { useState, useEffect } from 'react';
-import { collection, query, orderBy, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import { db } from '../firebaseConfig'; // Import your Firestore database instance
-import { Card, Button } from "flowbite-react";
-import useAdminCheck from "../hooks/useAdminCheck"
+import { db } from '../firebaseConfig';
+import { useState, useEffect } from "react";
+import { collection, query, orderBy, getDocs } from 'firebase/firestore'; // Modular imports for Firebase
+import { Card } from "flowbite-react";
+import { MdOutlineError } from "react-icons/md";
+
 
 function ImageGallery() {
-  const [images, setImages] = useState([]);
-  const {isAdmin} = useAdminCheck(); // Replace with your actual admin check logic
+  const [images, setImages] = useState([]); // State to store images
+  const [loading, setLoading] = useState(true); // Loading state
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      const q = query(collection(db, "images"), orderBy("timestamp", "desc"));
-      const querySnapshot = await getDocs(q);
-      const imageList = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      setImages(imageList);
-    };
+  // Function to fetch images with a query (order by timestamp)
+  const fetchImages = async () => {
+    setLoading(true);
 
-    fetchImages();
-  }, []); // Empty dependency array means this effect runs once on mount
-
-  const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, "images", id));
-      setImages(images.filter((image) => image.id !== id)); // Remove the deleted image from the state
+      // Create a Firestore query to fetch images in descending order of timestamp
+      const q = query(collection(db, "images"), orderBy("timestamp", "desc"));
+
+      // Execute the query
+      const querySnapshot = await getDocs(q);
+
+      // Map through the documents and get image URLs and headings
+      const imageList = querySnapshot.docs.map(doc => ({
+        url: doc.data().url,
+        heading: doc.data().heading // Fetch the heading along with the image URL
+      }));
+
+      setImages(imageList); // Set the fetched images and headings in state
+      setLoading(false); // Stop loading
     } catch (error) {
-      console.error("Error deleting document: ", error);
+      console.error("Error fetching images:", error);
+      setLoading(false); // Stop loading if error occurs
     }
   };
 
+  // Fetch images when the component loads
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
   return (
-    <div className='p-3 grid lg:grid-cols-3 gap-4'>
-      {images.map((image) => (
-        <Card
-          key={image.id}
-          className="max-w-sm"
-          imgAlt={image.description}
-          imgSrc={image.link}
-        >
-          <p className="font-medium text-gray-700 dark:text-gray-400">
-            {image.description}
-          </p>
-          {isAdmin && (
-            <Button color="failure" onClick={() => handleDelete(image.id)}>
-              Delete
-            </Button>
-          )}
-        </Card>
-      ))}
+    <div className="App">
+      <h1  className=' w-[80%] md:w-[60%] p-3 my-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center'>Our Photo Gallery</h1>
+
+      {/* Display loading state */}
+      {loading ? <h3>Loading images...</h3> : null}
+
+      {/* Display fetched images */}
+      <div className="grid md:grid-cols-3 px-2 md:px-0 justify-items-center space-y-5">
+        {images.length > 0 ? (
+          images.map((image, index) => (
+<>
+    
+    <Card
+      className="max-w-sm" key={index}
+      imgAlt={`Uploaded ${index}`}
+      imgSrc={image.url}
+    >
+      <h5 className="text-2xl font-bold text-center tracking-tight text-gray-700 dark:text-white">
+      {image.heading}
+      </h5>
+      
+    </Card>
+    </>
+
+          ))
+        ) : (
+          !loading && <p className=' text-white py-5 rounded-md bg-orange-400 w-5/6 text-center mx-auto'> <MdOutlineError className='h-5 w-5 items-center inline mx-2' />No images found!</p>
+        )}
+      </div>
     </div>
   );
 }

@@ -12,8 +12,8 @@ import profile from "../assets/images/profile.png"
 // import { deleteUser } from "firebase/auth";
 import { deleteDoc } from "firebase/firestore";
 import PostVideo from '../components/PostVideo';
-// import PostDriveLink from '../components/PostDriveLink';
-import ImageLinkForm from '../components/ImageLinkForm';
+import PostDriveLink from '../components/PostDriveLink';
+// import ImageLinkForm from '../components/ImageLinkForm';
 import PostPDF from '../components/PostPDF';
 
 
@@ -118,9 +118,9 @@ useEffect(() => {
     {/* Video Section */}
     <PostVideo/>
 
-    {/* <PostDriveLink/> */}
+    <PostDriveLink/>
 
-    <ImageLinkForm/>
+    {/* <ImageLinkForm/> */}
 
     {/* ++++++++++++++++++++ users +++++++++++++++++++++++++++ */}
 

@@ -15,7 +15,7 @@ function Home() {
 
 
 
-       <div className="h-56   md:w-5/6 mx-auto sm:h-64 md:h-[80vh] ">
+       <div className="h-56    md:w-5/6 mx-auto sm:h-64 md:h-[80vh] ">
       <Carousel>
         <img src={image1} className=' object-center object-contain '  alt="..." />
         <img src={image2} className=' object-center object-contain ' alt="..." />
@@ -27,8 +27,6 @@ function Home() {
       </Carousel>
     </div>
 
-  
-    
 
   <h1 className=' capitalize w-1/2 mx-auto bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA] text-white text-xl text-center py-2 mt-4 rounded-xl'> about us</h1>
     <Card  className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
@@ -45,9 +43,11 @@ function Home() {
       </p>
     </Card>
 
+    
+
     <Player
      src="https://lottie.host/db331ee6-a947-43c4-addc-b79f2ffda203/Kf7xIksVZa.json"
-      className="player"
+      className="player "
       autoplay
      loop
      
@@ -55,7 +55,7 @@ function Home() {
 
     />
 
-    <iframe className='w-full md:w-4/6 text-justify px-2  h-96 mx-auto' src="https://www.youtube.com/embed/lIOLrZgZfAg? si=4nCEhAd3CQ0we6DK" ></iframe>
+    <iframe className='  w-full md:w-4/6 text-justify px-2  h-96 mx-auto' src="https://www.youtube.com/embed/lIOLrZgZfAg? si=4nCEhAd3CQ0we6DK" ></iframe>
 
     
       

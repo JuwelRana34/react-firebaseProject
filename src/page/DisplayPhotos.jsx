@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebaseConfig';
 import ImageGallery from '../components/ImageGallery';
 
+
 const DisplayPhotos = () => {
   const [links, setLinks] = useState([]);
 
@@ -50,6 +51,8 @@ const DisplayPhotos = () => {
       })}
 
       <ImageGallery/>
+
+     
     </div>
   );
 };
