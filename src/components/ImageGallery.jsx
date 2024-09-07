@@ -43,7 +43,7 @@ function ImageGallery() {
     <div className="App">
       <h1  className=' w-[80%] md:w-[60%] p-3 my-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center'>Our Photo Gallery</h1>
 
-      {/* Display loading state */}
+      { /*Display loading state */}
       {loading ? <h3>Loading images...</h3> : null}
 
       {/* Display fetched images */}
@@ -57,9 +57,9 @@ function ImageGallery() {
       imgAlt={`Uploaded ${index}`}
       imgSrc={image.url}
     >
-      <h5 className="text-2xl font-bold text-center tracking-tight text-gray-700 dark:text-white">
+      <p className="  text-justify font-bold tracking-tight text-gray-700 dark:text-white">
       {image.heading}
-      </h5>
+      </p>
       
     </Card>
     </>
