@@ -2,7 +2,7 @@ import  { useState } from 'react';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { FloatingLabel } from "flowbite-react";
-
+import { Player } from '@lottiefiles/react-lottie-player';
 
 
 const ForgotPassword = () => {
@@ -24,6 +24,15 @@ const ForgotPassword = () => {
     return (
         <div className='h-screen' >
             <h2 className='w-[80%] p-3 mb-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center '>Reset Your Password</h2>
+
+                <Player
+                    src="https://lottie.host/bc304dc5-19ce-4669-9c1c-fa72c725ae12/7A9oLJCV8U.json"
+                    speed={1}
+                    className='w-[50%] pb-4 md:w-[25%]'
+                    loop={true}
+                    autoplay
+                />
+
             <form className='  w-[90%] md:w-3/6 mx-auto' onSubmit={handlePasswordReset}>
                 {/* <input
                     type="email"

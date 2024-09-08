@@ -3,7 +3,7 @@ import { getDocs, collection,deleteDoc, doc } from 'firebase/firestore';
 import { db} from '../firebaseConfig';
 import useAdminCheck from '../hooks/useAdminCheck';
 import {  toast } from 'react-toastify';
-
+import { Player } from '@lottiefiles/react-lottie-player';
 
 
 function Notice() {
@@ -46,6 +46,14 @@ function Notice() {
 
           <h1 className="text-center font-bold text-orange-500 text-xl my-1 md:text-2xl "> Notice  of Department IHC  </h1>
           <hr className="  w-5/6 h-[1px] mx-auto"/>
+
+        <Player
+        autoplay
+        loop
+        src="https://lottie.host/f07f6bb7-ff6e-4cd2-8b0c-2797aa803517/xgyMhzFvv3.json"
+        
+        className=' w-[50%] mx-auto md:w-[25%]'
+        />
           
             {Notice.map(notics => (
           <div key={notics.id} className="  h-auto w-full mx-auto py-3">

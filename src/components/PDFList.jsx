@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, orderBy, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig"; // Adjust the path accordingly
+import { Player } from '@lottiefiles/react-lottie-player';
 import useAdminCheck from '../hooks/useAdminCheck';
 import pdflogo from '../assets/images/pdfIcon.png';
 import { toast } from "react-toastify";
@@ -44,10 +45,17 @@ const PDFList = () => {
   return (
     <>
     
-    <div>
+    <div className="mt-4">
       <h2 className='w-[80%] p-3 mb-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center'>
         Previous Years Questions PDFs
       </h2>
+
+      <Player
+          autoplay
+          loop
+          src="https://lottie.host/fefe81d5-dea1-4c0b-b92c-4abf9ab8b921/CD71cyLtrb.json"
+          className='w-[50%] md:w-[20%] rounded-lg '
+        />
 
       {loading ? (
         <p className="text-center">Loading PDFs...</p>
