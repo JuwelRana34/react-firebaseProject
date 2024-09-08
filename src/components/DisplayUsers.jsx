@@ -132,11 +132,11 @@ const DisplayUsers = () => {
               <Table.Cell>{user.batch}</Table.Cell>
             </Table.Row> 
               ))
-            ) : (
-              <Alert className='my-2' color="warning" rounded>
-              <span className="font-medium">Info alert!</span> No users found in this location.
+            ) : ( 
+              <Alert className='my-2 w-[300px] md:w-auto mx-2 ' color="warning" rounded>
+              <span className="font-medium w-full">Info alert!</span> No users found in this location.
             </Alert>
-             
+            
             )}
             </Table.Body>
         </Table>
