@@ -47,11 +47,9 @@ function ImageGallery() {
       {loading ? <h3>Loading images...</h3> : null}
 
       {/* Display fetched images */}
-      <div className="grid md:grid-cols-3 px-2 md:px-0 justify-items-center space-y-5">
+      <div className="grid md:grid-cols-3 px-2 md:px-0 justify-items-center space-y-5 mx-auto  space-x-3">
         {images.length > 0 ? (
           images.map((image, index) => (
-<>
-    
     <Card
       className="max-w-sm" key={index}
       imgAlt={`Uploaded ${index}`}
@@ -61,11 +59,7 @@ function ImageGallery() {
       {image.heading}
       </p>
       
-    </Card>
-    </>
-
-          ))
-        ) : (
+    </Card>))) : (
           !loading && <p className=' text-white py-5 rounded-md bg-orange-400 w-5/6 text-center mx-auto'> <MdOutlineError className='h-5 w-5 items-center inline mx-2' />No images found!</p>
         )}
       </div>
