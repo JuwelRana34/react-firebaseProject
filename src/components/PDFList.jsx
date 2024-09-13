@@ -60,17 +60,20 @@ const PDFList = () => {
       {loading ? (
         <p className="text-center">Loading PDFs...</p>
       ) : (
-        <div className='container w-full md:w-[60%] mx-auto'>
-          <div className='m-2 md:m-4 md:mt-10 md:ml-10'>
-            {pdfLinks.map((pdf) => (
+        <div className='container mt-10 w-full md:w-[90%] mx-auto'>
+          <div className='m-2 md:m-4 justify-center grid md:grid-cols-2 md:gap-5 '>
+            {pdfLinks.map((pdf, index) => (
+         
+              
+              
               <li
-                key={pdf.id}
-                className='flex items-center mx-auto font-semibold w-auto bg-gray-200 rounded-lg mb-2 p-2'
-              >
+                key={pdf.id} 
+                className={`flex w-full items-center mx-auto font-semibold  ${index % 2 === 0 ? 'bg-blue-300 ' : 'bg-teal-300'}   rounded-lg mb-2 p-2`}>
+                {/* className='flex items-center mx-auto font-semibold w-auto  rounded-lg mb-2 p-2'> */}
                 <img src={pdflogo} alt="" className='mr-2 h-10 w-10' />
                 {pdf.name}
 
-                <div className='md:flex'>
+                <div className='lg:flex  right-0 '>
 
                 <a href={pdf.link} download={pdf.name}>
                     <button
@@ -81,7 +84,7 @@ const PDFList = () => {
 
                   {isAdmin && (
                     <button
-                      className='py-2 w-24 text-center m-2 text-white rounded-md bg-red-400 hover:bg-red-700'
+                      className='py-2 w-24 text-center m-2 text-white rounded-md bg-red-500 hover:bg-red-700'
                       onClick={() => handleDelete(pdf.id)}
                     >
                       Delete
@@ -89,7 +92,11 @@ const PDFList = () => {
                   )}
                 </div>
               </li>
+
+
             ))}
+
+
           </div>
         </div>
       )}
