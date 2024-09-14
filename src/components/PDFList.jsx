@@ -68,7 +68,7 @@ const PDFList = () => {
               
               <li
                 key={pdf.id} 
-                className={`flex w-full items-center mx-auto font-semibold  ${index % 2 === 0 ? 'bg-blue-300 ' : 'bg-teal-300'}   rounded-lg mb-2 p-2`}>
+                className={`flex w-full items-center mx-auto font-semibold  ${index % 2 === 0 ? 'bg-blue-200 ' : 'bg-teal-200'}   rounded-lg mb-2 p-2`}>
                 {/* className='flex items-center mx-auto font-semibold w-auto  rounded-lg mb-2 p-2'> */}
                 <img src={pdflogo} alt="" className='mr-2 h-10 w-10' />
                 {pdf.name}
@@ -77,7 +77,7 @@ const PDFList = () => {
 
                 <a href={pdf.link} download={pdf.name}>
                     <button
-                        className='py-2 w-24 text-center m-2 text-white rounded-md bg-green-400 hover:bg-green-500'>
+                        className={` ${index % 2 === 0? 'bg-blue-400' :'bg-teal-400'} py-2 w-24 text-center m-2 text-white rounded-md hover:bg-green-500`}>
                         Download
                     </button>
                 </a>
