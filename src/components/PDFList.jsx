@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs, query, orderBy, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../firebaseConfig"; // Adjust the path accordingly
-import { Player } from '@lottiefiles/react-lottie-player';
-import useAdminCheck from '../hooks/useAdminCheck';
-import pdflogo from '../assets/images/pdfIcon.png';
+import { Player } from "@lottiefiles/react-lottie-player";
+import useAdminCheck from "../hooks/useAdminCheck";
+import pdflogo from "../assets/images/pdfIcon.png";
 import { toast } from "react-toastify";
 
 const PDFList = () => {
@@ -18,11 +25,10 @@ const PDFList = () => {
       const querySnapshot = await getDocs(q);
       const links = querySnapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
       setPdfLinks(links);
-      setLoading(false)
-      
+      setLoading(false);
     };
 
     fetchPDFLinks();
@@ -35,74 +41,78 @@ const PDFList = () => {
       await deleteDoc(doc(db, "pdfs", id));
       // Update the state to remove the deleted link from the list
       setPdfLinks((prevLinks) => prevLinks.filter((pdf) => pdf.id !== id));
-      toast.success("pdf file delete successfully!")
+      toast.success("pdf file delete successfully!");
     } catch (error) {
       console.error("Error deleting document: ", error);
-      toast.error(error)
+      toast.error(error);
     }
   };
 
   return (
     <>
-    
-    <div className="mt-4">
-      <h2 className='w-[80%] p-3 mb-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center'>
-        Previous Years Questions PDFs
-      </h2>
+      <div className="mt-4">
+        <h2 className="w-[80%] p-3 mb-5 bg-gradient-to-r from-blue-400 to-cyan-600 text-white text-xl font-semibold shadow-lg rounded-md mx-auto text-center">
+          Previous Years Questions PDFs
+        </h2>
 
-      <Player
+        <Player
           autoplay
           loop
           src="https://lottie.host/fefe81d5-dea1-4c0b-b92c-4abf9ab8b921/CD71cyLtrb.json"
-          className='w-[50%] md:w-[20%] rounded-lg '
+          className="w-[50%] md:w-[20%] rounded-lg "
         />
 
-      {loading ? (
-        <p className="text-center">Loading PDFs...</p>
-      ) : (
-        <div className='container mt-10 w-full md:w-[90%] mx-auto'>
-          <div className='m-2 md:m-4 justify-center grid md:grid-cols-2 md:gap-5 '>
-            {pdfLinks.map((pdf, index) => (
-         
-              
-              
-              <li
-                key={pdf.id} 
-                className={`flex w-full items-center mx-auto font-semibold  ${index % 2 === 0 ? 'bg-blue-200 ' : 'bg-teal-200'}   rounded-lg mb-2 p-2`}>
-                {/* className='flex items-center mx-auto font-semibold w-auto  rounded-lg mb-2 p-2'> */}
-                <img src={pdflogo} alt="" className='mr-2 h-10 w-10' />
-                {pdf.name}
-
-                <div className='lg:flex  right-0 '>
-
-                <a href={pdf.link} download={pdf.name}>
-                    <button
-                        className={` ${index % 2 === 0? 'bg-blue-400' :'bg-teal-400'} py-2 w-24 text-center m-2 text-white rounded-md hover:bg-green-500`}>
-                        Download
-                    </button>
-                </a>
-
-                  {isAdmin && (
-                    <button
-                      className='py-2 w-24 text-center m-2 text-white rounded-md bg-red-500 hover:bg-red-700'
-                      onClick={() => handleDelete(pdf.id)}
+        {loading ? (
+          <p className="text-center">Loading PDFs...</p>
+        ) : (
+          <div className="container mt-10 w-full md:w-[90%] mx-auto">
+            <div className="m-2 md:m-4 justify-center grid md:grid-cols-2 md:gap-5 ">
+              {pdfLinks.map((pdf, index) => (
+                <>
+                  {/* *********** */}
+                  <div
+                    className={` border ${
+                      index % 2 === 0
+                        ? "bg-gradient-to-r to-blue-300 from-white border-blue-200"
+                        : "bg-gradient-to-l to-teal-300 from-white border-teal-200 "
+                    } mb-2 p-2 rounded-lg flex items-center justify-between`}
+                  >
+                    <li
+                      key={pdf.id}
+                      className={`flex w-full items-center mx-auto  font-semibold `}
                     >
-                      Delete
-                    </button>
-                  )}
-                </div>
-              </li>
+                      <img src={pdflogo} alt="" className="mr-2 h-10 w-10" />
+                      {pdf.name}
+                    </li>
 
+                    <div className="lg:flex  right-0 ">
+                      <a href={pdf.link} download={pdf.name}>
+                        <button
+                          className={` ${
+                            index % 2 === 0 ? "bg-blue-400" : "bg-teal-400"
+                          } py-2 w-24 text-center m-2 text-white rounded-md hover:bg-green-500`}
+                        >
+                          Download
+                        </button>
+                      </a>
 
-            ))}
-
-
+                      {isAdmin && (
+                        <button
+                          className="py-2 w-24 text-center m-2 text-white rounded-md bg-red-500 hover:bg-red-700"
+                          onClick={() => handleDelete(pdf.id)}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  {/* ******************************** */}
+                </>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-    
-    
+        )}
+      </div>
     </>
   );
 };
