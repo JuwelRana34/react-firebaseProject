@@ -1,5 +1,5 @@
 import logo from '../assets/images/logo.png'
-
+// import { Link } from 'react-router-dom'
 
 function Footer2() {
   return (
@@ -13,7 +13,9 @@ function Footer2() {
           </div>
           
           <hr />
-          <span className='text-center inline-block w-full py-3 text-white text-lg bg-green-radial '> © 2022 IHC 18th Batch</span>
+          <span className='text-center inline-block w-full py-3 text-white text-lg bg-green-radial '> © 2022 - {new Date().getFullYear()} IHC 18th Batch <br />
+          {/* <Link to='/RulesAndRegulations' className=' underline text-blue-700'>Rules and regulations</Link> */}
+          </span>
         </div>
       </footer>
     

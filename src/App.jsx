@@ -17,7 +17,7 @@ import ProfilePhotoUpload from './components/ProfilePhotoUpload';
 import Qustions from './page/Qustions';
 import ForgotPassword from './components/ForgotPassword ';
 import VideoPage from './page/VideoPage';
-
+import RulesAndRegulations from './page/RulesAndRegulations';
 import ContactCR from './page/ContactCR';
 import ImageGallery from './components/ImageGallery';
 import BirthdayWish from './components/BirthdayWish';
@@ -49,6 +49,7 @@ function App() {
       <Route path="/photos" element={<ImageGallery/>} />
       <Route path="/Qustions" element={<Qustions/>} />
       <Route path="/user" element={<UserDashboard />} />
+      <Route path="/RulesAndRegulations" element={<RulesAndRegulations />} />
       <Route path="/PhotoUpdate" element={<ProfilePhotoUpload />} />
       </>}
       {isAdmin && <Route path="/Admin" element={<Admin />} />}

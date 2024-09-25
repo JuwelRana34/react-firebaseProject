@@ -61,7 +61,7 @@ function PostDriveLink() {
       {/* upload image  to Cloudinary */}
 
 <div className=" w-5/6  mx-auto text-center space-y-4 my-5">
-      <input className="border border-gray-500" type="file" onChange={handleImageChange} value={image ? undefined : ""}/> {/* Input for image */}
+      <input className="border border-gray-500 w-full md:w-1/2" type="file" onChange={handleImageChange} value={image ? undefined : ""}/> {/* Input for image */}
       <input
         type="text"
         placeholder="Enter image heading"

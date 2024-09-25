@@ -26,7 +26,7 @@ const locations = [
   "Kushtia", "Magura", "Meherpur", "Narail", "Satkhira"
 ];
 
-const Batchs = [ "17th" , "18th" , "19th"]
+const Batchs = [ "18th" , "19th"]
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -38,7 +38,7 @@ function Register() {
   const [registration, setRegistration] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState('');
   const [gender, setGender] = useState(''); // New state for gender
-  const [dob, setDob] = useState(new Date()); // New state for Date of Birth
+  const [dob, setDob] = useState(''); // New state for Date of Birth
 
 
   const totify = () => toast.error('user alreay register please login !', {
@@ -122,6 +122,7 @@ function Register() {
             <Label htmlFor="dob" value="Date of Birth" />
           </div>
           <DatePicker
+           
             selected={dob}
             onChange={(date) => setDob(date)}
             dateFormat="dd/MM/yyyy"
@@ -130,6 +131,7 @@ function Register() {
             showYearDropdown
             scrollableYearDropdown
             required
+            
           />
         </div>
 
@@ -182,7 +184,7 @@ function Register() {
           onChange={(e) => setBatch(e.target.value)}
           required
         >
-          <option  value="">Select your Batch</option>
+          <option  value="" disabled>Select your Batch</option>
           {Batchs.map((Batch, index) => (
             <option key={index} value={Batch}>{Batch}</option>
           ))}
