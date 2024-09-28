@@ -52,8 +52,9 @@ function Home() {
         </Carousel>
       </div>
 
-      <div className=" container mx-auto">
-        <InstallPWAButton />
+      <div className=" container text-center mx-auto">
+        <InstallPWAButton /> 
+
       </div>
       <h1 className=" capitalize w-1/2 mx-auto bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA] text-white text-xl text-center py-2 mt-4 rounded-xl">
         {" "}
