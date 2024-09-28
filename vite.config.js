@@ -11,9 +11,9 @@ export default defineConfig({
       registerType: 'autoUpdate',  // Automatically updates the service worker when changes are made
       includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],  // Include assets for caching
       manifest: {
-        name: 'Jnu-IHC',
-        short_name: 'Jnu-IHC',
-        description: 'A  app for Jnu IHC student',
+        name: 'JnuIHC',
+        short_name: 'JnuIHC',
+        description: 'A app for Jnu IHC student',
         theme_color: '#ffffff',
         icons: [
           {

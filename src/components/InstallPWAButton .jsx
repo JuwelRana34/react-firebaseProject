@@ -40,7 +40,7 @@ const InstallPWAButton = () => {
   return (
     <>
       {isInstallable && (
-        <button onClick={handleInstallClick} className="install-button">
+        <button onClick={handleInstallClick} className="install-button bg-orange-600 text-white rounded-lg border-none py-3 px-5 my-5 ">
           Install App
         </button>
       )}

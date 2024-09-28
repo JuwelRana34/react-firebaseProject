@@ -1,5 +1,4 @@
 import logo from '../assets/images/logo.png'
-import InstallPWAButton from './InstallPWAButton ';
 
 function Footer2() {
   return (
@@ -9,8 +8,7 @@ function Footer2() {
           <div className=' flex-col justify-center items-center text-center '>
             <img src={logo} className='h-12 w-12 m-2 mx-auto' alt="" />
             <h1 className='m-2 text-xl font-semibold text-orange-600 '>Jagannath University Department of IHC
-            </h1> <br />
-            <h1>install app  </h1><InstallPWAButton/>
+            </h1>
           </div>
           
           <hr />
