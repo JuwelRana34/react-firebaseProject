@@ -5,6 +5,8 @@ import image4 from "../assets/images/04.jpg";
 import image5 from "../assets/images/05.jpg";
 import image6 from "../assets/images/06.jpg";
 import image7 from "../assets/images/07.jpg";
+import image8 from "../assets/images/football.jpg";
+import routine from "../assets/images/2nd Y routine.png";
 import InstallPWAButton from "../components/InstallPWAButton ";
 import { Carousel, Card } from "flowbite-react";
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -35,12 +37,17 @@ function Home() {
             alt="..."
           />
           <img
-            src={image5}
+            src={image8}
             className=" object-center object-contain "
             alt="..."
           />
           <img
             src={image6}
+            className=" object-center object-contain "
+            alt="..."
+          />
+          <img
+            src={image5}
             className=" object-center object-contain "
             alt="..."
           />
@@ -56,6 +63,12 @@ function Home() {
         <InstallPWAButton /> 
 
       </div>
+{/* routine */}
+      <div className="text-center md:w-3/5 mx-auto">
+      <h1 className="my-4 text-xl font-semibold underline"> Class Routine 3rd sem.</h1>
+<img className="w-full" src={routine} alt=""  />
+      </div>
+
       <h1 className=" capitalize w-1/2 mx-auto bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA] text-white text-xl text-center py-2 mt-4 rounded-xl">
         {" "}
         about us
