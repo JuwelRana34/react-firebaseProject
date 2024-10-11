@@ -10,7 +10,7 @@ import routine from "../assets/images/2nd Y routine.png";
 import InstallPWAButton from "../components/InstallPWAButton ";
 import { Carousel, Card } from "flowbite-react";
 import { Player } from "@lottiefiles/react-lottie-player";
-// import ScheduleTable from "../components/ScheduleTable";
+import ScrollingAnimation from "../components/InfiniteScrollAnimation";
 
 function Home() {
   return (
@@ -66,7 +66,7 @@ function Home() {
       </div>
 
 {/* routine */}
-{/* <ScheduleTable/> */}
+
       <div className="text-center md:w-3/5 mx-auto">
       <h1 className="my-4 text-xl font-semibold underline"> Class Routine 3rd sem.</h1>
 <img className="w-full" src={routine} alt=""  />
@@ -89,6 +89,8 @@ function Home() {
           ফটো ও ভিডিও ফাইল আকারে থাকবে।
         </p>
       </Card>
+
+      <ScrollingAnimation/>
 
       <Player
         src="https://lottie.host/db331ee6-a947-43c4-addc-b79f2ffda203/Kf7xIksVZa.json"
