@@ -97,3 +97,31 @@ margin: 1.5rem auto;
 .test {
   background: red !important;
 }
+
+
+
+
+/* celebrations amination */
+.showresult{
+
+	font-family: "Exo", sans-serif;
+	color: #fff;
+	background: linear-gradient(45deg, #10b3ad, #a34cdd, #8fd308, #be4901);
+	background-size: 400% 400%;
+	animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+

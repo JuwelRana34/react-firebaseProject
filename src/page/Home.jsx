@@ -11,6 +11,7 @@ import InstallPWAButton from "../components/InstallPWAButton ";
 import { Carousel, Card } from "flowbite-react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import ScrollingAnimation from "../components/InfiniteScrollAnimation";
+import CountdownTimer from "../components/CountdownTimer";
 
 function Home() {
   return (
@@ -76,6 +77,10 @@ function Home() {
         {" "}
         about us
       </h1>
+
+      <CountdownTimer event="versity day comming..." targetDate={new Date("Oct 20, 2024 00:00:00")} /> 
+
+
       <Card className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
         <h5 className="text-2xl font-bold tracking-tight ">
           Jagannath university Udoyon-18
