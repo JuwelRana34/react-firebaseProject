@@ -55,7 +55,7 @@
 import { useState, useEffect , useRef } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const CountdownTimer = ({ targetDate, event }) => {
+const CountdownTimer = ({ targetDate, event, eventresult}) => {
 
   const countdownRef = useRef(null);
 
@@ -113,7 +113,7 @@ const CountdownTimer = ({ targetDate, event }) => {
     <div  ref={countdownRef} className="flex flex-col md:w-1/2 mx-auto md:rounded-lg items-center  justify-center p-2 my-4" >
       {countdownFinished ? ( <>
         <div className="text-center text-xl py-10  relative font-bold  transition-all duration-500 ">
-          🎉 Happy Jagannath University day! 🎉
+          🎉 {eventresult}! 🎉
           {timerdiv()}
       </div>
      </> ) : (<>

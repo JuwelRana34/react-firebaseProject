@@ -13,7 +13,11 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import ScrollingAnimation from "../components/InfiniteScrollAnimation";
 import CountdownTimer from "../components/CountdownTimer";
 
+
+
 function Home() {
+
+
   return (
     <>
       <div className="h-56    md:w-5/6 mx-auto sm:h-64 md:h-[80vh] ">
@@ -67,21 +71,20 @@ function Home() {
       </div>
 
 {/* routine */}
-
-      <div className="text-center md:w-3/5 mx-auto">
+ <div className="text-center md:w-3/5 mx-auto">
       <h1 className="my-4 text-xl font-semibold underline"> Class Routine 3rd sem.</h1>
 <img className="w-full" src={routine} alt=""  />
       </div>
+     
 
       <h1 className=" capitalize w-1/2 mx-auto bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA] text-white text-xl text-center py-2 mt-4 rounded-xl">
         {" "}
         about us
       </h1>
 
-      <CountdownTimer event="versity day comming..." targetDate={new Date("Oct 20, 2024 00:00:00")} /> 
+      <CountdownTimer eventresult="result" event="versity day comming..." targetDate={new Date("Oct 20, 2024 00:00:00")} /> 
 
-
-      <Card className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
+ <Card className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
         <h5 className="text-2xl font-bold tracking-tight ">
           Jagannath university Udoyon-18
         </h5>
@@ -94,6 +97,8 @@ function Home() {
           ফটো ও ভিডিও ফাইল আকারে থাকবে।
         </p>
       </Card>
+       
+      
 
       <ScrollingAnimation/>
 
