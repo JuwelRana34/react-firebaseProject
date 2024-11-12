@@ -82,7 +82,7 @@ function Home() {
         about us
       </h1>
 
-      <CountdownTimer eventresult="result" event="versity day comming..." targetDate={new Date("Oct 20, 2024 00:00:00")} /> 
+      <CountdownTimer eventresult="Ongoing 1st mid exams." event="1st mid exams will start from 17/11/2024" targetDate={new Date("Nov 17, 2024 00:00:00")} /> 
 
  <Card className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
         <h5 className="text-2xl font-bold tracking-tight ">
