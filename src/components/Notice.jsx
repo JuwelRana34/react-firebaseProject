@@ -66,20 +66,20 @@ function Notice() {
           <tbody>
             <tr className="hover:bg-gray-100">
               <td className="border border-gray-300 px-4 py-2">5/12/2024</td>
-              <td className="border border-gray-300 px-4 py-2">2101 <span className="text-green-500">( 10:00AM )</span></td>
+              <td className="border border-gray-300 px-4 py-2">IHC-2101 <span className="text-green-500">( 10:00AM )</span></td>
             </tr>
            
             <tr className="hover:bg-gray-100">
               <td className="border border-gray-300 px-4 py-2">9/12/2024</td>
-              <td className="border border-gray-300 px-4 py-2">2102 <span className="text-green-500">( 12:00PM )</span></td>
+              <td className="border border-gray-300 px-4 py-2">IHC-2102 <span className="text-green-500">( 12:00PM )</span></td>
             </tr>
             <tr className="hover:bg-gray-100">
               <td className="border border-gray-300 px-4 py-2">10/12/2024</td>
-              <td className="border border-gray-300 px-4 py-2">2103 <span className="text-green-500">( 11:00AM )</span></td>
+              <td className="border border-gray-300 px-4 py-2">IHC-2103 <span className="text-green-500">( 11:00AM )</span></td>
             </tr>
             <tr className="hover:bg-gray-100">
               <td className="border border-gray-300 px-4 py-2">11/12/2024</td>
-              <td className="border border-gray-300 px-4 py-2">2104 <span className="text-green-500">( 09:00AM )</span></td>
+              <td className="border border-gray-300 px-4 py-2">IHC-2104 <span className="text-green-500">( 09:00AM )</span></td>
             </tr>
           </tbody>
         </table>
