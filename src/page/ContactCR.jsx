@@ -1,5 +1,5 @@
 import bushra from "../assets/images/bushra.jpg"
-import jakir from "../assets/images/jakir.jpg"
+import Rayhan from "../assets/images/rayhan.jpg"
 import Raju from "../assets/images/Raju.jpg"
 import facebook from "../assets/images/facebook.png"
 import messenger from "../assets/images/messenger.png"
@@ -18,25 +18,25 @@ function ContactCR() {
 
       <div className="flex flex-col justify-between items-center lg:flex-row lg:items-start">
         
-        {/* Jakir Hossine Card */}
+        {/* Abu Rayhan  Card */}
         <div className="w-full flex-1 mt-8 p-8 order-2 bg-white shadow-xl rounded-xl md:rounded-3xl sm:w-96 lg:w-full lg:order-1 lg:rounded-r-none">
           <div className="mb-7 pb-7 flex items-center border-b border-gray-300">
-            <img src={jakir} alt="Jakir Hossine" className="rounded-full w-20 h-20" />
+            <img src={Rayhan} alt="Jakir Hossine" className="rounded-full w-20 h-20" />
             <div className="ml-5">
-              <span className="block text-2xl font-semibold">Jakir Hossine</span>
+              <span className="block text-2xl font-semibold">Abu Rayhan </span>
               <span className="text-gray-500 font-medium">Male CR</span>
             </div>
           </div>
           <ul className="mb-7 font-medium text-gray-500">
             <li className="flex text-lg mb-2">
               <img className="h-8 w-8" src={facebook }alt="Facebook" />
-              <a href="https://www.facebook.com/profile.php?id=100077713316568&mibextid=ZbWKwL" className="ml-3">
+              <a href="https://www.facebook.com/shaku.rayhan" className="ml-3">
                 Contact me
               </a>
             </li>
             <li className="flex text-lg mb-2">
               <img className="h-8 w-8" src={whatsapp} alt="WhatsApp" />
-              <span className="ml-3">+8801765724729</span>
+              <span className="ml-3">01719015997 </span>
             </li>
           </ul>
           <a href="https://m.me/j/AbZ0Bl2T1CxyHzAc/" className="flex justify-center items-center bg-indigo-600 rounded-md md:rounded-xl py-2 md:py-6 px-4 text-center text-white md:text-2xl">
