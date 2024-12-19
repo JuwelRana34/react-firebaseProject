@@ -11,7 +11,7 @@ import InstallPWAButton from "../components/InstallPWAButton ";
 import { Carousel, Card } from "flowbite-react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import ScrollingAnimation from "../components/InfiniteScrollAnimation";
-import CountdownTimer from "../components/CountdownTimer";
+// import CountdownTimer from "../components/CountdownTimer";
 
 
 

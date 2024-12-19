@@ -55,7 +55,7 @@ function Notice() {
       />
 
       {/* exam routine  */}
-      <div className="overflow-x-auto container mx-auto mt-10">
+      {/* <div className="overflow-x-auto container mx-auto mt-10">
         <table className="table-auto border-collapse border border-gray-300 w-full text-center">
           <thead>
             <tr className="bg-blue-500 text-white">
@@ -83,7 +83,7 @@ function Notice() {
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> */}
 
       {/* exam routine  */}
 
