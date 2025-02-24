@@ -16,10 +16,6 @@ const  firebaseConfig = {
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-
-
-
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
