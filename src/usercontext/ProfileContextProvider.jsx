@@ -3,11 +3,36 @@ import  { useState, useEffect } from "react";
 import ProfileContext from "./ProfileContext";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebaseConfig"; // Assuming Firebase Auth is set up in firebase.js
-
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 const ProfileContextProvider = ({ children }) => {
     const [userId, setUserId] = useState(null);
-    // const [isAdmin, setIsAdmin] = useState(false);
+    const [userData, setUserData] = useState(null);
+    const [loadingProfileData, setLoadingProfileData] = useState(true);
+    useEffect(() => {
+        const fetchUserData = async (uid) => {
+          const userDoc = doc(db, "users", uid);
+          const userSnapshot = await getDoc(userDoc);
+          if (userSnapshot.exists()) {
+            setUserData(userSnapshot.data());
+          } else {
+            console.log("No such document!");
+          }
+          setLoadingProfileData(false);
+        };
+    
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            fetchUserData(user.uid);
+          } else {
+            setLoadingProfileData(false);
+          }
+        });
+    
+        return () => unsubscribe();
+      }, []);
 
+    // for user id 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -24,7 +49,7 @@ const ProfileContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <ProfileContext.Provider value={{ userId, setUserId, }}>
+        <ProfileContext.Provider value={{ loadingProfileData,userId, setUserId,userData }}>
             {children}
         </ProfileContext.Provider>
     );

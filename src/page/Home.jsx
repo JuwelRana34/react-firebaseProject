@@ -6,7 +6,7 @@ import image5 from "../assets/images/05.jpg";
 import image6 from "../assets/images/06.jpg";
 import image7 from "../assets/images/07.jpg";
 import image8 from "../assets/images/football.jpg";
-import routine from "../assets/images/2ND Y 2ND SEM RAMADAN ROUTINE.png";
+import routine from "../assets/images/2nd Y 2nd sem. routine.png";
 import InstallPWAButton from "../components/InstallPWAButton ";
 import { Carousel, Card } from "flowbite-react";
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -69,11 +69,7 @@ function Home() {
       <div className="text-center md:w-3/5 mx-auto ">
         <h1 className="my-4 px-1 text-3xl font-semibold  underline">
           {" "}
-          Class Routine 4th sem. <br />
-          <span className=" capitalize text-rose-600 text-lg animate-pulse no-underline">
-            {" "}
-            this routine valid for only Ramadan
-          </span>
+          Class Routine 4th sem.
         </h1>
         <img className="w-full" src={routine} alt="" />
       </div>

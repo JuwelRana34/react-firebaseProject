@@ -7,6 +7,7 @@ import ProfileContextProvider  from "./usercontext/ProfileContextProvider.jsx"
 // Import the PWA service worker
 import { registerSW } from 'virtual:pwa-register';
 
+// eslint-disable-next-line no-unused-vars
 const updateSW = registerSW({
   onNeedRefresh() {
     if (confirm('New content is available. Reload?')) {

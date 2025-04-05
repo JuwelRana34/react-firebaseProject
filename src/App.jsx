@@ -22,6 +22,8 @@ import ContactCR from './page/ContactCR';
 import ImageGallery from './components/ImageGallery';
 import BirthdayWish from './components/BirthdayWish';
 import Allstudents from './components/Allstudents';
+import ProfileSetup from './page/ProfileSetup';
+import Checkuser from './hooks/Checkuser';
 
 
 function App() {
@@ -43,10 +45,14 @@ function App() {
       <Route path="/contactcr" element={<ContactCR/>} />
       <Route path="/forgot-password" element={<ForgotPassword/>} />
       {user&& <>
+
+
+      <Route path="/Students" element={<Checkuser><Allstudents/> </Checkuser> } />
+      <Route path="/videos" element={<Checkuser><VideoPage/></Checkuser>} />
+      <Route path="/photos" element={<Checkuser><ImageGallery/></Checkuser>} />
+      <Route path="/profile-setup" element={<ProfileSetup/>} />
       <Route path="/notice" element={<Notice/>} />
-      <Route path="/Students" element={<Allstudents/>} />
-      <Route path="/videos" element={<VideoPage/>} />
-      <Route path="/photos" element={<ImageGallery/>} />
+      
       <Route path="/Qustions" element={<Qustions/>} />
       <Route path="/user" element={<UserDashboard />} />
       <Route path="/RulesAndRegulations" element={<RulesAndRegulations />} />

@@ -1,8 +1,8 @@
 // src/Register.js
 import { useState } from 'react';
 import { auth, db } from '../firebaseConfig';
-import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-import { setDoc, doc } from 'firebase/firestore';
+import { createUserWithEmailAndPassword, sendEmailVerification,signInWithPopup,GoogleAuthProvider } from 'firebase/auth';
+import { setDoc, doc, getDoc } from 'firebase/firestore';
 import { Button, Label, TextInput} from "flowbite-react";
 import {  toast } from 'react-toastify';
 import { Link, Navigate } from 'react-router-dom';
@@ -37,9 +37,9 @@ function Register() {
   const [fbLink, setfbLink] = useState('');
   const [registration, setRegistration] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState('');
-  const [gender, setGender] = useState(''); // New state for gender
-  const [dob, setDob] = useState(''); // New state for Date of Birth
-
+  const [gender, setGender] = useState(''); 
+  const [dob, setDob] = useState(''); 
+  const [redirectToProfileSetup, setRedirectToProfileSetup] = useState(false);
 
   const totify = () => toast.error('user alreay register please login !', {
     position: "top-right",
@@ -50,6 +50,11 @@ function Register() {
       position: "top-right",
       theme: "colored",
     });
+
+    const registrationSuccessNotify = (displayName) => toast.success(`🎉 Welcome, ${displayName}! You've successfully signed in with Google.`, {
+      position: "top-right",
+      theme: "colored",
+  });
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -78,6 +83,49 @@ function Register() {
       setRegistration(true)
     }
   };
+
+  const handelGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result?.user;
+
+        if (user) {
+            const userRef = doc(db, 'users', user?.uid);
+            const docSnap = await getDoc(userRef);
+
+            if (!docSnap.exists()) {
+                await setDoc(userRef, {
+                    uid: user?.uid,
+                    email: user?.email,
+                    name: user?.displayName || '',
+                    isNewGoogleUser: true, // Flag for first-time Google login
+                    role: 'user',
+                    googleSignIn: true,
+                });
+                setRedirectToProfileSetup(true); 
+                registrationSuccessNotify(user?.displayName);
+            } else if (docSnap.data()?.isNewGoogleUser) {
+                setRedirectToProfileSetup(true);
+                registrationSuccessNotify(user?.displayName);
+            } else {
+                registrationSuccessNotify(user?.displayName);
+                setRegistration(true); // Redirect to login or main app
+            }
+        }
+
+    } catch (error) {
+        console.error("Error signing in with Google:", error);
+        toast.error('Failed to sign in with Google.', {
+            position: "top-right",
+            theme: "colored",
+        });
+    }
+};
+
+if (redirectToProfileSetup) {
+    return <Navigate to="/profile-setup" />;
+}
 
   if(registration){
     return <Navigate to="/login"/>
@@ -211,6 +259,19 @@ function Register() {
       <Link to="/login" className='bg-blue-700 text-white py-1 my-2 rounded-md text-center text-lg font-medium'> Login </Link>
     </form>
 
+    <div className="flex md:mx-auto mx-4 max-w-md mt-5 flex-col gap-4">
+        <button
+          onClick={handelGoogleLogin}
+          className="bg-gray-200   text-center py-3 rounded-md font-semibold mb-2 hover:bg-gradient-to-r from-blue-500 to-violet-500 hover:text-white transition shadow-md"
+        >
+          <img
+            className="w-7 inline mx-5"
+            src="https://cdn-icons-png.flaticon.com/128/2504/2504914.png"
+            alt="googeIMg"
+          />
+          Sign in with google
+        </button>
+      </div>
      </>
   );
 }

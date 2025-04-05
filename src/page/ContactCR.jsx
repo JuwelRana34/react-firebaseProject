@@ -1,4 +1,4 @@
-import bushra from "../assets/images/bushra.jpg"
+import mubina from "../assets/images/profile.png"
 import Rayhan from "../assets/images/rayhan.jpg"
 import Raju from "../assets/images/Raju.jpg"
 import facebook from "../assets/images/facebook.png"
@@ -72,25 +72,25 @@ function ContactCR() {
           </a>
         </div>
         
-        {/* Bushra Momtaj Card */}
+        {/* Mubina Akter Card */}
         <div className="w-full flex-1 mt-8 p-8 order-3 bg-white shadow-xl rounded-xl md:rounded-3xl sm:w-96 lg:w-full lg:order-3 lg:rounded-l-none">
           <div className="mb-7 pb-7 flex items-center border-b border-gray-300">
-            <img src={bushra} alt="Bushra Momtaj" className="rounded-full w-20 h-20" />
+            <img src={mubina} alt="Mubina akter" className="rounded-full w-20 h-20" />
             <div className="ml-5">
-              <span className="block text-2xl font-semibold">Bushra Momtaj</span>
+              <span className="block text-2xl font-semibold">Mubina Akter</span>
               <span className="text-gray-500 font-medium">Female CR</span>
             </div>
           </div>
           <ul className="mb-7 font-medium text-gray-500">
             <li className="flex text-lg mb-2">
               <img className="h-8 w-8" src={facebook} alt="Facebook" />
-              <a href="https://www.facebook.com/nilufa.yasmin.14661?mibextid=ZbWKwL" className="ml-3">
+              <a href="https://www.facebook.com/mubina.akter.726233" className="ml-3">
                 Contact me
               </a>
             </li>
             <li className="flex text-lg mb-2">
               <img className="h-8 w-8" src={whatsapp} alt="WhatsApp" />
-              <span className="ml-3">+8801723390736</span>
+              <span className="ml-3">+880 1791-975207</span>
             </li>
           </ul>
           <a href="https://m.me/j/AbZ6C5I0VVK8diqS/" className="flex justify-center items-center bg-indigo-600 rounded-md md:rounded-xl py-2 md:py-6 px-4 text-center text-white md:text-2xl">
