@@ -11,7 +11,7 @@ import InstallPWAButton from "../components/InstallPWAButton ";
 import { Carousel, Card } from "flowbite-react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import ScrollingAnimation from "../components/InfiniteScrollAnimation";
-// import CountdownTimer from "../components/CountdownTimer";
+import CountdownTimer from "../components/CountdownTimer";
 
 function Home() {
   return (
@@ -79,7 +79,7 @@ function Home() {
         about us
       </h1>
 
-      {/* <CountdownTimer eventresult="Ongoing 2nd mid exams." event="2nd mid exams will start from 05/12/2024" targetDate={new Date("Dec 05, 2024 00:00:00")} />  */}
+      <CountdownTimer eventresult="Ongoing 1st mid exams." event="4th semester 1st mid exams will start from 27/04/2025" targetDate={new Date("April 27, 2025 00:00:00")} /> 
 
       <Card className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
         <h5 className="text-2xl font-bold tracking-tight ">

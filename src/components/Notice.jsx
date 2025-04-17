@@ -8,7 +8,28 @@ import { Player } from "@lottiefiles/react-lottie-player";
 function Notice() {
   const [Notice, setNotice] = useState([]);
   const { isAdmin } = useAdminCheck();
-
+  const examDate =[
+    {
+      date : '27/04/2025',
+      subject:"IHC-2201",
+      time:"9:00 AM "
+    },
+    {
+      date : '28/04/2025',
+      subject:"IHC-2202",
+      time:"10:00 AM "
+    },
+    {
+      date : '29/04/2025',
+      subject:"IHC-2203",
+      time:"12:00 AM "
+    },
+    {
+      date : '30/04/2025',
+      subject:"IHC-2204",
+      time:"11:00 AM "
+    }
+  ]
   const notify = () =>
     toast.error("** notice deleted **", {
       theme: "colored",
@@ -55,7 +76,7 @@ function Notice() {
       />
 
       {/* exam routine  */}
-      {/* <div className="overflow-x-auto container mx-auto mt-10">
+      <div className="overflow-x-auto container mx-auto mt-10">
         <table className="table-auto border-collapse border border-gray-300 w-full text-center">
           <thead>
             <tr className="bg-blue-500 text-white">
@@ -64,26 +85,16 @@ function Notice() {
             </tr>
           </thead>
           <tbody>
-            <tr className="hover:bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2">5/12/2024</td>
-              <td className="border border-gray-300 px-4 py-2">IHC-2101 <span className="text-green-500">( 10:00AM )</span></td>
+            { examDate.map((exam , index)=>(
+              <tr key={index} className="hover:bg-gray-100">
+              <td className="border border-gray-300 px-4 py-2">
+               { exam.date}</td>
+              <td className="border border-gray-300 px-4 py-2">{exam.subject} <span className="text-green-500">( {exam.time} )</span></td>
             </tr>
-           
-            <tr className="hover:bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2">9/12/2024</td>
-              <td className="border border-gray-300 px-4 py-2">IHC-2102 <span className="text-green-500">( 12:00PM )</span></td>
-            </tr>
-            <tr className="hover:bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2">10/12/2024</td>
-              <td className="border border-gray-300 px-4 py-2">IHC-2103 <span className="text-green-500">( 11:00AM )</span></td>
-            </tr>
-            <tr className="hover:bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2">11/12/2024</td>
-              <td className="border border-gray-300 px-4 py-2">IHC-2104 <span className="text-green-500">( 09:00AM )</span></td>
-            </tr>
+            ))}
           </tbody>
         </table>
-      </div> */}
+      </div>
 
       {/* exam routine  */}
 
