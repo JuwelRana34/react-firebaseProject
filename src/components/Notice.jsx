@@ -8,28 +8,30 @@ import { Player } from "@lottiefiles/react-lottie-player";
 function Notice() {
   const [Notice, setNotice] = useState([]);
   const { isAdmin } = useAdminCheck();
-  const examDate =[
+  const examDate = [
     {
-      date : '27/04/2025',
-      subject:"IHC-2201",
-      time:"9:00 AM "
+      date: "27/04/2025",
+      subject: "IHC-2201",
+      time: "9:00 AM ",
     },
     {
-      date : '28/04/2025',
-      subject:"IHC-2202",
-      time:"10:00 AM "
+      date: "28/04/2025",
+      subject: "IHC-2202",
+      time: "10:00 AM ",
     },
     {
-      date : '29/04/2025',
-      subject:"IHC-2203",
-      time:"12:00 AM "
+      date: "29/04/2025",
+      subject: "IHC-2203",
+      time: "12:00 AM ",
     },
     {
-      date : '30/04/2025',
-      subject:"IHC-2204",
-      time:"11:00 AM "
-    }
-  ]
+      date: "30/04/2025",
+      subject: "IHC-2204",
+      time: "11:00 AM ",
+    },
+  ];
+  const examEndDate = "04/30/2025 11:00 AM";
+
   const notify = () =>
     toast.error("** notice deleted **", {
       theme: "colored",
@@ -76,7 +78,7 @@ function Notice() {
       />
 
       {/* exam routine  */}
-      <div className="overflow-x-auto container mx-auto mt-10">
+      <div className={`overflow-x-auto container mx-auto mt-10 ${new Date(examEndDate) < new Date() ? "hidden" : ""}`}>
         <table className="table-auto border-collapse border border-gray-300 w-full text-center">
           <thead>
             <tr className="bg-blue-500 text-white">
@@ -85,13 +87,38 @@ function Notice() {
             </tr>
           </thead>
           <tbody>
-            { examDate.map((exam , index)=>(
-              <tr key={index} className="hover:bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2">
-               { exam.date}</td>
-              <td className="border border-gray-300 px-4 py-2">{exam.subject} <span className="text-green-500">( {exam.time} )</span></td>
-            </tr>
-            ))}
+            {examDate.map((exam, index) => {
+              // Split the date into parts
+              const [day, month, year] = exam.date.split("/");
+
+              // Combine date and time into a single valid Date string
+              const fullDateTimeString = `${month}/${day}/${year} ${exam.time}`; // now MM/DD/YYYY
+
+              // Create full Date object
+              const examDateTime = new Date(fullDateTimeString);
+
+              // Current time
+              const now = new Date();
+
+              return (
+                <tr
+                  key={index}
+                  className={` ${
+                    examDateTime < now ? "bg-rose-200 text-rose-600 cursor-not-allowed" : "hover:bg-gray-100"
+                  }`}
+                >
+                  <td className="border border-gray-300 px-4 py-2">
+                    {exam.date}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {exam.subject}{" "}
+                    <span  className={` ${
+                    examDateTime < now ? "text-red-600" : "hover:bg-gray-100 text-green-500"
+                  }`}>( {exam.time} )</span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
