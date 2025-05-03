@@ -10,27 +10,27 @@ function Notice() {
   const { isAdmin } = useAdminCheck();
   const examDate = [
     {
-      date: "27/04/2025",
+      date: "18/05/2025",
       subject: "IHC-2201",
-      time: "9:00 AM ",
-    },
-    {
-      date: "28/04/2025",
-      subject: "IHC-2202",
       time: "10:00 AM ",
     },
     {
-      date: "29/04/2025",
-      subject: "IHC-2203",
-      time: "12:00 AM ",
+      date: "19/05/2025",
+      subject: "IHC-2202",
+      time: "12:00 PM ",
     },
     {
-      date: "30/04/2025",
-      subject: "IHC-2204",
+      date: "20/05/2025",
+      subject: "IHC-2203",
       time: "11:00 AM ",
     },
+    {
+      date: "21/05/2025",
+      subject: "IHC-2204",
+      time: "09:00 AM ",
+    },
   ];
-  const examEndDate = "04/30/2025 11:00 AM";
+  const examEndDate = "05/21/2025 11:00 PM";
 
   const notify = () =>
     toast.error("** notice deleted **", {
