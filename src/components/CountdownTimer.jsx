@@ -63,7 +63,7 @@ const CountdownTimer = ({ targetDate, event, eventresult }) => {
     >
       {countdownFinished ? (
         <>
-          <div className="text-center text-xl py-10  relative font-bold  transition-all duration-500 ">
+          <div className=" capitalize text-center text-xl py-10  relative font-bold  transition-all duration-500 ">
             🎉 {eventresult}! 🎉
           </div>
         </>

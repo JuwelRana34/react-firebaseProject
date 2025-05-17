@@ -1,13 +1,14 @@
+import { Player } from "@lottiefiles/react-lottie-player";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import { toast } from "react-toastify";
 import { db } from "../firebaseConfig";
 import useAdminCheck from "../hooks/useAdminCheck";
-import { toast } from "react-toastify";
-import { Player } from "@lottiefiles/react-lottie-player";
 
 function Notice() {
   const [Notice, setNotice] = useState([]);
   const { isAdmin } = useAdminCheck();
+  const examPostpone = true;
   const examDate = [
     {
       date: "18/05/2025",
@@ -49,7 +50,7 @@ function Notice() {
   }, []);
 
   const formatDate = (date) => {
-    return date.toLocaleString(); // Adjust formatting as needed
+    return date.toLocaleString();
   };
 
   const handleDelete = async (id) => {
@@ -78,51 +79,64 @@ function Notice() {
       />
 
       {/* exam routine  */}
-      <div className={`overflow-x-auto container mx-auto mt-10 ${new Date(examEndDate) < new Date() ? "hidden" : ""}`}>
-        <table className="table-auto border-collapse border border-gray-300 w-full text-center">
-          <thead>
-            <tr className="bg-blue-500 text-white">
-              <th className="border border-gray-300 px-4 py-2">Data</th>
-              <th className="border border-gray-300 px-4 py-2">Course</th>
-            </tr>
-          </thead>
-          <tbody>
-            {examDate.map((exam, index) => {
-              // Split the date into parts
-              const [day, month, year] = exam.date.split("/");
+      {!examPostpone && (
+        <div
+          className={`overflow-x-auto container mx-auto mt-10 ${
+            new Date(examEndDate) < new Date() ? "hidden" : ""
+          }`}
+        >
+          <table className="table-auto border-collapse border border-gray-300 w-full text-center">
+            <thead>
+              <tr className="bg-blue-500 text-white">
+                <th className="border border-gray-300 px-4 py-2">Data</th>
+                <th className="border border-gray-300 px-4 py-2">Course</th>
+              </tr>
+            </thead>
+            <tbody>
+              {examDate.map((exam, index) => {
+                // Split the date into parts
+                const [day, month, year] = exam.date.split("/");
 
-              // Combine date and time into a single valid Date string
-              const fullDateTimeString = `${month}/${day}/${year} ${exam.time}`; // now MM/DD/YYYY
+                // Combine date and time into a single valid Date string
+                const fullDateTimeString = `${month}/${day}/${year} ${exam.time}`; // now MM/DD/YYYY
 
-              // Create full Date object
-              const examDateTime = new Date(fullDateTimeString);
+                // Create full Date object
+                const examDateTime = new Date(fullDateTimeString);
 
-              // Current time
-              const now = new Date();
+                // Current time
+                const now = new Date();
 
-              return (
-                <tr
-                  key={index}
-                  className={` ${
-                    examDateTime < now ? "bg-rose-200 text-rose-600 cursor-not-allowed" : "hover:bg-gray-100"
-                  }`}
-                >
-                  <td className="border border-gray-300 px-4 py-2">
-                    {exam.date}
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    {exam.subject}{" "}
-                    <span  className={` ${
-                    examDateTime < now ? "text-red-600" : "hover:bg-gray-100 text-green-500"
-                  }`}>( {exam.time} )</span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-
+                return (
+                  <tr
+                    key={index}
+                    className={` ${
+                      examDateTime < now
+                        ? "bg-rose-200 text-rose-600 cursor-not-allowed"
+                        : "hover:bg-gray-100"
+                    }`}
+                  >
+                    <td className="border border-gray-300 px-4 py-2">
+                      {exam.date}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {exam.subject}{" "}
+                      <span
+                        className={` ${
+                          examDateTime < now
+                            ? "text-red-600"
+                            : "hover:bg-gray-100 text-green-500"
+                        }`}
+                      >
+                        ( {exam.time} )
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
       {/* exam routine  */}
 
       {Notice.map((notics) => (
