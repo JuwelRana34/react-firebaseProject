@@ -117,8 +117,13 @@ function ContactCR() {
             type="text"
             placeholder="Type name..."
           />
-          <MdPersonSearch size={24} className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500" />
+          <MdPersonSearch
+            size={24}
+            className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500"
+          />
+         
         </div>
+          <p className="text-gray-500 capitalize text-center my-4">Note: tap on the number and redirect to mobile app</p>
 
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 mt-10">
           {filteredNumbers.map((number, index) => (
@@ -130,8 +135,10 @@ function ContactCR() {
             >
               <div>
                 <h2 className="text-xl font-semibold">{number.name}</h2>
-                <p className="text-gray-500">{number.mobile}</p>
-                <p className="text-rose-500">{number.bloodGroup}</p>
+                <a href={`tel:${number.mobile}`} className="text-blue-500 ">
+                  Call: {number.mobile}
+                </a>
+                <p className="text-rose-500">Blood: {number.bloodGroup}</p>
               </div>
             </div>
           ))}
