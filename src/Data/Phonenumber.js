@@ -1,6 +1,6 @@
 const NumberList = [
   { name: "Atikur Rahman Atik", mobile: "01787924357", bloodGroup: "O+" },
-  { name: "Juwel Rana", mobile: "015618303352", bloodGroup: "B+" },
+  { name: "Juwel Rana", mobile: "01518303352", bloodGroup: "B+" },
   { name: "Hasib Sandar", mobile: "01959240491", bloodGroup: "B+" },
   { name: "Nayem", mobile: "01820985410", bloodGroup: "A+" },
   { name: "Amanutulla", mobile: "01571331549", bloodGroup: "B+" },
