@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { db } from "../firebaseConfig";
 import useAdminCheck from "../hooks/useAdminCheck";
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 function Notice() {
   const [Notice, setNotice] = useState([]);
@@ -145,11 +147,11 @@ function Notice() {
             <div className="border-[#337ab7] bg-[#d9edf7]  overflow-hidden border-[1px] rounded-md w-[95%] md:w-5/6  m-5   mx-auto ">
               <h1 className="bg-[#337ab7]  mb-4 rounded-t-md shadow-md text-white text-md md:text-2xl p-2  font-bold font-serif">
                 <i className="fa-solid px-2 md:px-3 fa-circle-info inline-block"></i>
-                {notics.title}
+               <img src="https://cdn-icons-png.flaticon.com/128/9019/9019234.png" alt="" className="inline-block mr-2 w-8" /> {notics.title}
               </h1>
 
               <p className="text-justify  text-[#2379c4] mb-2  p-2">
-                {notics.text}
+                <Markdown remarkPlugins={[remarkGfm]}>{notics.text}</Markdown>
               </p>
               <p className="m-2">
                 Posted on:{" "}
