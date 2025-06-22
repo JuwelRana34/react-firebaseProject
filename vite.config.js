@@ -11,6 +11,9 @@ export default defineConfig({
       registerType: 'autoUpdate',  // Automatically updates the service worker when changes are made
       includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],  // Include assets for caching
       manifest: {
+         workbox: {
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
+      },
         name: 'JnuIHC',
         short_name: 'JnuIHC',
         description: 'A app for Jnu IHC student',
