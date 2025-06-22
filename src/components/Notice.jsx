@@ -8,30 +8,30 @@ import useAdminCheck from "../hooks/useAdminCheck";
 function Notice() {
   const [Notice, setNotice] = useState([]);
   const { isAdmin } = useAdminCheck();
-  const examPostpone = true;
+  const examPostpone = false;
   const examDate = [
     {
-      date: "18/05/2025",
+      date: "29/06/2025",
       subject: "IHC-2201",
       time: "10:00 AM ",
     },
     {
-      date: "19/05/2025",
+      date: "30/06/2025",
       subject: "IHC-2202",
       time: "12:00 PM ",
     },
     {
-      date: "20/05/2025",
+      date: "01/07/2025",
       subject: "IHC-2203",
       time: "11:00 AM ",
     },
     {
-      date: "21/05/2025",
+      date: "02/07/2025",
       subject: "IHC-2204",
       time: "09:00 AM ",
     },
   ];
-  const examEndDate = "05/21/2025 11:00 PM";
+  const examEndDate = "07/02/2025 11:00 am"; // MM/DD/YYYY HH:mm AM/PM
 
   const notify = () =>
     toast.error("** notice deleted **", {
