@@ -79,7 +79,7 @@ function Home() {
         about us
       </h1>
 
-      <CountdownTimer eventresult=" Exam Postpone." event="4th semester 2nd mid exams will start from 29/06/2025" targetDate={new Date("jun 29, 2025 08:00:00")} /> 
+      <CountdownTimer eventresult="Ongoing Exam." event="4th semester final exams will start from 17/07/2025" targetDate={new Date("july 17, 2025 09:00:00")} /> 
 
       <Card className="max-w-[90%] text-white mx-auto my-10 bg-gradient-to-r  from-[#9D50BB] to-[#6E48AA]">
         <h5 className="text-2xl font-bold tracking-tight ">
