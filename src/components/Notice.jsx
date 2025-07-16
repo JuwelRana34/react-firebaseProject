@@ -13,27 +13,27 @@ function Notice() {
   const examPostpone = false;
   const examDate = [
     {
-      date: "29/06/2025",
+      date: "17/07/2025",
       subject: "IHC-2201",
-      time: "10:00 AM ",
+      time: "09:00 AM ",
     },
     {
-      date: "30/06/2025",
+      date: "24/07/2025",
       subject: "IHC-2202",
-      time: "12:00 PM ",
+      time: "09:00 AM ",
     },
     {
-      date: "01/07/2025",
+      date: "31/07/2025",
       subject: "IHC-2203",
-      time: "11:00 AM ",
+      time: "09:00 AM ",
     },
     {
-      date: "02/07/2025",
+      date: "10/08/2025",
       subject: "IHC-2204",
       time: "09:00 AM ",
     },
   ];
-  const examEndDate = "07/02/2025 11:00 am"; // MM/DD/YYYY HH:mm AM/PM
+  const examEndDate = "08/10/2025 12:00 PM"; // MM/DD/YYYY HH:mm AM/PM
 
   const notify = () =>
     toast.error("** notice deleted **", {
